@@ -15,7 +15,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <main className="flex h-screen">
           <Sidebar />
-          {children}
+          <div className="bg-beige-100 flex-1">{children}</div>
         </main>
       </body>
     </html>
