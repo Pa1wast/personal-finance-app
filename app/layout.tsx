@@ -1,3 +1,4 @@
+import Sidebar from './components/Sidebar';
 import './globals.css';
 import { metdataProps } from '@/app/types/types';
 
@@ -11,7 +12,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
       </head>
-      <body>{children}</body>
+      <body>
+        <main className="flex h-screen">
+          <Sidebar />
+          {children}
+        </main>
+      </body>
     </html>
   );
 }
