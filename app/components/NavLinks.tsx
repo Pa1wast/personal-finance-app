@@ -48,12 +48,12 @@ function NavLinks() {
             className={`group flex w-[90%] items-center rounded-br-xl rounded-tr-xl border-l-4 text-lg transition-all duration-200 ${
               isActive
                 ? "border-green bg-beige-100 text-grey-900"
-                : "text-grey-300 border-transparent hover:text-grey-100"
+                : "border-transparent text-grey-300 hover:text-grey-100"
             }`}
           >
             {getIcon(
               link.name,
-              `size-6 ml-6 ${
+              `size-8 ml-6 ${
                 isActive
                   ? "text-green"
                   : "group-hover:text-grey-100 text-grey-300"

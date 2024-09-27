@@ -9,7 +9,7 @@ export default function Card({
 }) {
   return (
     <div
-      className={`w-full rounded-lg p-6 ${isPrimary ? "bg-grey-900 text-grey-100" : "bg-white text-grey-900"}`}
+      className={`w-full rounded-xl p-6 ${isPrimary ? "bg-grey-900 text-grey-100" : "bg-white text-grey-900"}`}
     >
       <h4
         className={`mb-5 text-sm capitalize ${isPrimary ? "text-grey-100" : "text-grey-500"}`}
