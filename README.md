@@ -1,3 +1,3 @@
-#Perosnal Finance App
+Perosnal Finance App
 
-##A front-end-mentors project.
+A front-end-mentors project.
