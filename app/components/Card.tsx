@@ -1,3 +1,5 @@
+import { convertToCurrency } from "../lib/helpers";
+
 export default function Card({
   label,
   value,
@@ -16,12 +18,7 @@ export default function Card({
       >
         {label}
       </h4>
-      <p className="text-4xl font-bold">
-        {new Intl.NumberFormat("en-US", {
-          style: "currency",
-          currency: "USD",
-        }).format(value)}
-      </p>
+      <p className="text-4xl font-bold">{convertToCurrency(value, 2)}</p>
     </div>
   );
 }
