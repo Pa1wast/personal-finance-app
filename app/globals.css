@@ -6,21 +6,21 @@
 }
 
 @font-face {
-  font-family: 'Public-Sans';
-  src: url('../app/fonts/PublicSans-Regular.ttf');
+  font-family: "Public-Sans";
+  src: url("../app/fonts/PublicSans-Regular.ttf");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Public-Sans';
-  src: url('../app/fonts/PublicSans-Bold.ttf');
+  font-family: "Public-Sans";
+  src: url("../app/fonts/PublicSans-Bold.ttf");
   font-weight: bold;
   font-style: normal;
 }
 
 body {
-  font-family: 'Public-Sans', sans-serif;
+  font-family: "Public-Sans", sans-serif;
 }
 
 @layer utilities {

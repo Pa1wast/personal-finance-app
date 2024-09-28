@@ -11,7 +11,7 @@ export default function Card({
 }) {
   return (
     <div
-      className={`w-full rounded-xl px-6 py-4 ${isPrimary ? "bg-grey-900 text-grey-100" : "bg-white text-grey-900"}`}
+      className={`w-full rounded-lg px-6 py-4 ${isPrimary ? "bg-grey-900 text-grey-100" : "bg-white text-grey-900"}`}
     >
       <h4
         className={`mb-5 text-xs capitalize ${isPrimary ? "text-grey-100" : "text-grey-500"}`}
