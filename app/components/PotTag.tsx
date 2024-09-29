@@ -10,10 +10,11 @@ export default function PotTag({
   color: string;
 }) {
   return (
-    <div
-      className={`relative flex h-min max-w-xs flex-col pl-3 text-xs before:absolute before:left-0 before:h-[90%] before:w-[3px] before:rounded-full before:bg-grey-300 before:content-['']`}
-    >
-      <p className="overflow-hidden text-ellipsis whitespace-nowrap text-xs font-light text-grey-500">
+    <div className={`relative flex h-min max-w-xs flex-col pl-3 text-xs`}>
+      <p
+        style={{ borderColor: color }}
+        className="mb-1 overflow-hidden text-ellipsis whitespace-nowrap rounded-md border p-1 font-extralight"
+      >
         {name}
       </p>
       <p className="overflow-hidden text-ellipsis whitespace-nowrap text-xs font-bold">

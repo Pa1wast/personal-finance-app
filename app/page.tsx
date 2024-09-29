@@ -1,16 +1,24 @@
 import Card from "./components/Card";
-import { getBalance, getPots, getTransactions } from "./lib/data-services";
+import {
+  getBalance,
+  getBudgets,
+  getPots,
+  getTransactions,
+} from "./lib/data-services";
 import { ArrowRightCircleIcon } from "@heroicons/react/24/outline";
 import { CurrencyDollarIcon } from "@heroicons/react/24/outline";
 import { convertToCurrency } from "./lib/helpers";
 import PotTag from "./components/PotTag";
 import TransactionOverview from "./components/TransactionOverview";
 import RecurringBillsOverview from "./components/RecurringBillsOverview";
+import { BudgetChart } from "./components/BudgetChart";
+import BudgetTag from "./components/BudgetTag";
 
 export default async function Home() {
   const { current, income, expenses } = await getBalance();
   const pots = await getPots();
-  const transactions = await getTransactions(40);
+  const transactions = await getTransactions(50);
+  const budgets = await getBudgets();
   const recurringBills = transactions.filter(
     (transaction: { recurring: boolean }) => transaction.recurring,
   );
@@ -22,6 +30,19 @@ export default async function Home() {
     (acc: number, cur: { total: number }) => (acc += cur.total),
     0,
   );
+
+  const budgetsWithTotalSpent = budgets.map((budget) => {
+    const totalSpent = transactions
+      .filter((transaction) => transaction.category === budget.category)
+      .reduce((acc, cur) => acc + Math.abs(cur.amount), 0);
+
+    return {
+      category: budget.category,
+      maximum: budget.maximum,
+      theme: budget.theme,
+      spent: totalSpent,
+    };
+  });
 
   return (
     <div className="">
@@ -88,6 +109,20 @@ export default async function Home() {
               <ArrowRightCircleIcon className="size-4" />
             </button>
           </div>
+
+          <div className="flex items-center">
+            <BudgetChart chartData={budgetsWithTotalSpent} />
+            <ul className="flex flex-col gap-4">
+              {budgets.map((budget, index) => (
+                <BudgetTag
+                  key={budget.name + "-" + index}
+                  category={budget.category}
+                  maximum={budget.maximum}
+                  color={budget.theme}
+                />
+              ))}
+            </ul>
+          </div>
         </div>
 
         <div className="row-span-2 max-h-max rounded-lg bg-white p-4">
@@ -125,6 +160,7 @@ export default async function Home() {
             )}
           </ul>
         </div>
+
         <div className="col-start-2 rounded-lg bg-white p-4">
           <div className="mb-6 flex justify-between">
             <p className="text-md font-extrabold">Recurring Bills</p>
