@@ -18,7 +18,7 @@ export default function Card({
       >
         {label}
       </h4>
-      <p className="text-2xl font-bold">{convertToCurrency(value, 2)}</p>
+      <p className="text-3xl font-bold">{convertToCurrency(value, 2)}</p>
     </div>
   );
 }

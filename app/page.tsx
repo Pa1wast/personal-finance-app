@@ -67,12 +67,12 @@ export default async function Home() {
             </button>
           </div>
 
-          <div className="flex gap-4">
-            <div className="flex flex-1 items-center gap-5 rounded-2xl bg-beige-100 px-3 py-2">
-              <CurrencyDollarIcon className="size-10 text-green" />
+          <div className="flex gap-1">
+            <div className="flex flex-1 items-center gap-5 rounded-2xl bg-beige-100 py-2 pl-5">
+              <CurrencyDollarIcon className="size-12 text-green" />
               <div className="flex flex-col gap-3">
                 <p className="text-sm font-light text-grey-500">Total Saved</p>
-                <p className="text-2xl font-bold">
+                <p className="text-4xl font-bold">
                   {convertToCurrency(totalSaved)}
                 </p>
               </div>
