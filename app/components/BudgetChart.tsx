@@ -32,10 +32,7 @@ export function BudgetChart({ chartData }) {
   return (
     <Card className="flex-1">
       <CardContent>
-        <ChartContainer
-          config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px]"
-        >
+        <ChartContainer config={chartConfig} className="mx-auto aspect-square">
           <PieChart>
             <ChartTooltip
               cursor={false}
@@ -45,8 +42,8 @@ export function BudgetChart({ chartData }) {
               data={chartData}
               dataKey="maximum"
               nameKey="category"
-              innerRadius={60}
-              strokeWidth={1}
+              innerRadius={80}
+              strokeWidth={10}
             >
               {/* Map through the chartData to assign fill color to each Cell */}
               {chartData.map(
