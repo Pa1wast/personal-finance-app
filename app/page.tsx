@@ -125,7 +125,7 @@ export default async function Home() {
           </div>
         </div>
 
-        <div className="row-span-2 max-h-max rounded-lg bg-white p-4">
+        <div className="row-span-2 rounded-lg bg-white p-4">
           <div className="mb-6 flex justify-between">
             <p className="text-md font-extrabold">Transactions</p>
 
@@ -153,7 +153,7 @@ export default async function Home() {
                 >
                   <TransactionOverview transaction={transaction} />
                   {index < displayedTransactions.length - 1 && (
-                    <span className="mb-4 mt-4 block h-[1px] w-full bg-grey-100"></span>
+                    <span className="mb-5 mt-5 block h-[1px] w-full bg-grey-100"></span>
                   )}
                 </li>
               ),
