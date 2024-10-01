@@ -15,7 +15,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <main className="flex h-screen w-screen overflow-hidden bg-beige-100">
           <Sidebar />
-          <div className="flex-1 overflow-auto px-8 py-10">{children}</div>
+          <div className="flex-1 overflow-auto px-5 py-8">{children}</div>
         </main>
       </body>
     </html>

@@ -45,7 +45,7 @@ function NavLinks() {
         return (
           <li
             key={link.name}
-            className={`group flex w-[90%] items-center rounded-br-xl rounded-tr-xl border-l-4 text-lg transition-all duration-200 ${
+            className={`group flex w-[90%] items-center rounded-br-xl rounded-tr-xl border-l-4 text-sm transition-all duration-200 ${
               isActive
                 ? "border-green bg-beige-100 text-grey-900"
                 : "border-transparent text-grey-300 hover:text-grey-100"
@@ -53,7 +53,7 @@ function NavLinks() {
           >
             {getIcon(
               link.name,
-              `size-8 ml-6 ${
+              `size-6 ml-4 ${
                 isActive
                   ? "text-green"
                   : "group-hover:text-grey-100 text-grey-300"
@@ -62,7 +62,7 @@ function NavLinks() {
 
             <Link
               href={link.href}
-              className={`mt-auto inline-block w-full rounded-lg px-4 py-4 font-bold ${
+              className={`mt-auto inline-block rounded-lg px-4 py-3 font-bold ${
                 isActive ? "text-grey-900" : "group-hover:text-grey-100"
               }`}
             >
