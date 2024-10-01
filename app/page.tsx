@@ -9,10 +9,10 @@ import { ArrowRightCircleIcon } from "@heroicons/react/24/outline";
 import { CurrencyDollarIcon } from "@heroicons/react/24/outline";
 import { convertToCurrency } from "./lib/helpers";
 import PotTag from "./components/PotTag";
-import TransactionOverview from "./components/TransactionOverview";
-import RecurringBillsOverview from "./components/RecurringBillsOverview";
 import { BudgetChart } from "./components/BudgetChart";
 import BudgetTag from "./components/BudgetTag";
+import TransactionsOverviewList from "./components/TransactionsOverviewList";
+import RecurringBillsOverviewList from "./components/RecurringBillsOverviewList";
 
 export default async function Home() {
   const { current, income, expenses } = await getBalance();
@@ -24,7 +24,19 @@ export default async function Home() {
   );
 
   const displayedTransactions = transactions.slice(0, 5);
-  const displayedrecurringBills = recurringBills.slice(0, 3);
+
+  const displayedRecurringBillsWithThemes = recurringBills
+    .map((bill) => {
+      const matchedBudget = budgets.find(
+        (budget) => budget.category === bill.category,
+      );
+      const theme = matchedBudget?.theme;
+      return {
+        ...bill,
+        theme,
+      };
+    })
+    .slice(0, 3);
 
   const totalSaved = pots.reduce(
     (acc: number, cur: { total: number }) => (acc += cur.total),
@@ -63,6 +75,7 @@ export default async function Home() {
               <span className="mr-2 duration-200 group-hover:mr-3">
                 See Details
               </span>
+
               <ArrowRightCircleIcon className="size-4" />
             </button>
           </div>
@@ -70,8 +83,10 @@ export default async function Home() {
           <div className="flex gap-1">
             <div className="flex flex-1 items-center gap-5 rounded-2xl bg-beige-100 py-2 pl-5">
               <CurrencyDollarIcon className="size-12 text-green" />
+
               <div className="flex flex-col gap-3">
                 <p className="text-sm font-light text-grey-500">Total Saved</p>
+
                 <p className="text-4xl font-bold">
                   {convertToCurrency(totalSaved)}
                 </p>
@@ -106,6 +121,7 @@ export default async function Home() {
               <span className="mr-2 duration-200 group-hover:mr-3">
                 See Details
               </span>
+
               <ArrowRightCircleIcon className="size-4" />
             </button>
           </div>
@@ -137,28 +153,7 @@ export default async function Home() {
             </button>
           </div>
 
-          <ul>
-            {displayedTransactions.map(
-              (
-                transaction: {
-                  name: string;
-                  date: string;
-                  amount: number;
-                  avatar: string;
-                },
-                index: number,
-              ) => (
-                <li
-                  key={transaction.name + "-" + transaction.date + "-" + index}
-                >
-                  <TransactionOverview transaction={transaction} />
-                  {index < displayedTransactions.length - 1 && (
-                    <span className="mb-5 mt-5 block h-[1px] w-full bg-grey-100"></span>
-                  )}
-                </li>
-              ),
-            )}
-          </ul>
+          <TransactionsOverviewList transactions={displayedTransactions} />
         </div>
 
         <div className="col-start-2 rounded-lg bg-white p-4">
@@ -173,21 +168,9 @@ export default async function Home() {
             </button>
           </div>
 
-          <ul className="flex flex-col gap-3">
-            {displayedrecurringBills.map(
-              (
-                recurringBill: {
-                  name: string;
-                  amount: number;
-                },
-                index: number,
-              ) => (
-                <li key={displayedrecurringBills.name + "-" + index}>
-                  <RecurringBillsOverview recurringBill={recurringBill} />
-                </li>
-              ),
-            )}
-          </ul>
+          <RecurringBillsOverviewList
+            recurringBills={displayedRecurringBillsWithThemes}
+          />
         </div>
       </div>
     </div>

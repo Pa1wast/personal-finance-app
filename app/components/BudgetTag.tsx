@@ -1,4 +1,3 @@
-import { before } from "node:test";
 import { convertToCurrency } from "../lib/helpers";
 
 export default function BudgetTag({
@@ -11,11 +10,11 @@ export default function BudgetTag({
   color: string;
 }) {
   return (
-    <div className={`h-min max-w-xs flex-col text-xs text-grey-900`}>
-      <p
-        style={{ borderColor: color }}
-        className="mb-1 overflow-hidden text-ellipsis whitespace-nowrap rounded-md border p-1 font-extralight"
-      >
+    <div
+      style={{ borderColor: color }}
+      className={`flex h-min max-w-xs items-center justify-between gap-2 rounded-md border-2 p-1 text-xs text-grey-900`}
+    >
+      <p className="overflow-hidden text-ellipsis whitespace-nowrap font-extralight">
         {category}
       </p>
       <p className="overflow-hidden text-ellipsis whitespace-nowrap font-bold">
