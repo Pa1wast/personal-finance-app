@@ -334,7 +334,7 @@
       "recurring": false
     },
     {
-      "avatar": "./public/images/avatars/sofia-peterson.jpg",
+      "avatar": "/images/avatars/sofia-peterson.jpg",
       "name": "Sofia Peterson",
       "category": "Transportation",
       "date": "2024-07-09T08:55:27Z",
@@ -342,7 +342,7 @@
       "recurring": false
     },
     {
-      "avatar": "./public/images/avatars/mason-martinez.jpg",
+      "avatar": "/images/avatars/mason-martinez.jpg",
       "name": "Mason Martinez",
       "category": "Lifestyle",
       "date": "2024-07-08T15:20:41Z",
@@ -350,7 +350,7 @@
       "recurring": false
     },
     {
-      "avatar": "./public/images/avatars/sebastian-cook.jpg",
+      "avatar": "/images/avatars/sebastian-cook.jpg",
       "name": "Sebastian Cook",
       "category": "Transportation",
       "date": "2024-07-07T11:45:55Z",
@@ -358,7 +358,7 @@
       "recurring": false
     },
     {
-      "avatar": "./public/images/avatars/william-harris.jpg",
+      "avatar": "/images/avatars/william-harris.jpg",
       "name": "William Harris",
       "category": "General",
       "date": "2024-07-06T17:10:09Z",
@@ -366,7 +366,7 @@
       "recurring": false
     },
     {
-      "avatar": "./public/images/avatars/elevate-education.jpg",
+      "avatar": "/images/avatars/elevate-education.jpg",
       "name": "Elevate Education",
       "category": "Education",
       "date": "2024-07-05T11:15:22Z",
@@ -374,7 +374,7 @@
       "recurring": true
     },
     {
-      "avatar": "./public/images/avatars/serenity-spa-and-wellness.jpg",
+      "avatar": "/images/avatars/serenity-spa-and-wellness.jpg",
       "name": "Serenity Spa & Wellness",
       "category": "Personal Care",
       "date": "2024-07-03T14:00:37Z",
@@ -382,7 +382,7 @@
       "recurring": true
     },
     {
-      "avatar": "./public/images/avatars/spark-electric-solutions.jpg",
+      "avatar": "/images/avatars/spark-electric-solutions.jpg",
       "name": "Spark Electric Solutions",
       "category": "Bills",
       "date": "2024-07-02T09:25:51Z",
@@ -390,7 +390,7 @@
       "recurring": true
     },
     {
-      "avatar": "./public/images/avatars/swift-ride-share.jpg",
+      "avatar": "/images/avatars/swift-ride-share.jpg",
       "name": "Swift Ride Share",
       "category": "Transportation",
       "date": "2024-07-02T19:50:05Z",

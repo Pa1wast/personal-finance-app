@@ -1,3 +1,5 @@
+import { revalidatePath } from "next/cache";
+
 export async function getBalance() {
   const res = await fetch("http://localhost:3000/api/balance");
   const data = await res.json();
@@ -20,8 +22,8 @@ export async function getBudgets() {
   return data;
 }
 
-export async function getTransactions(length: number) {
-  const url = `http://localhost:3000/api/transactions?length=${length}`;
+export async function getTransactions(start: number, end: number) {
+  const url = `http://localhost:3000/api/transactions?start=${start}&end=${end}`;
   const res = await fetch(url);
   const data = await res.json();
 

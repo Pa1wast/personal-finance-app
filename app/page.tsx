@@ -13,6 +13,7 @@ import { BudgetChart } from "./components/BudgetChart";
 import BudgetTag from "./components/BudgetTag";
 import TransactionsOverviewList from "./components/TransactionsOverviewList";
 import RecurringBillsOverviewList from "./components/RecurringBillsOverviewList";
+import Link from "next/link";
 
 export default async function Home() {
   const { current, income, expenses } = await getBalance();
@@ -57,7 +58,7 @@ export default async function Home() {
   });
 
   return (
-    <div className="">
+    <div>
       <h1 className="mb-8 text-3xl font-bold">Overview</h1>
 
       <div className="mb-4 flex w-full justify-between gap-4">
@@ -71,17 +72,20 @@ export default async function Home() {
           <div className="mb-6 flex justify-between">
             <p className="text-md font-extrabold">Pots</p>
 
-            <button className="group flex items-center text-xs font-extralight text-grey-300 hover:text-grey-900">
+            <Link
+              href="/pots"
+              className="group flex items-center text-xs font-extralight text-grey-300 hover:text-grey-900"
+            >
               <span className="mr-2 duration-200 group-hover:mr-3">
                 See Details
               </span>
 
               <ArrowRightCircleIcon className="size-4" />
-            </button>
+            </Link>
           </div>
 
-          <div className="flex gap-1">
-            <div className="flex flex-1 items-center gap-5 rounded-2xl bg-beige-100 py-2 pl-5">
+          <div className="flex gap-4">
+            <div className="flex flex-1 items-center gap-5 rounded-lg bg-beige-100 py-2 pl-5">
               <CurrencyDollarIcon className="size-12 text-green" />
 
               <div className="flex flex-col gap-3">
@@ -117,13 +121,16 @@ export default async function Home() {
           <div className="mb-6 flex justify-between">
             <p className="text-md font-extrabold">Budgets</p>
 
-            <button className="group flex items-center text-xs font-extralight text-grey-300 hover:text-grey-900">
+            <Link
+              href="/budgets"
+              className="group flex items-center text-xs font-extralight text-grey-300 hover:text-grey-900"
+            >
               <span className="mr-2 duration-200 group-hover:mr-3">
                 See Details
               </span>
 
               <ArrowRightCircleIcon className="size-4" />
-            </button>
+            </Link>
           </div>
 
           <div className="flex items-center">
@@ -145,12 +152,15 @@ export default async function Home() {
           <div className="mb-6 flex justify-between">
             <p className="text-md font-extrabold">Transactions</p>
 
-            <button className="group flex items-center text-xs font-extralight text-grey-300 hover:text-grey-900">
+            <Link
+              href="/transactions"
+              className="group flex items-center text-xs font-extralight text-grey-300 hover:text-grey-900"
+            >
               <span className="mr-2 duration-200 group-hover:mr-3">
                 View All
               </span>
               <ArrowRightCircleIcon className="size-4" />
-            </button>
+            </Link>
           </div>
 
           <TransactionsOverviewList transactions={displayedTransactions} />
@@ -160,12 +170,15 @@ export default async function Home() {
           <div className="mb-6 flex justify-between">
             <p className="text-md font-extrabold">Recurring Bills</p>
 
-            <button className="group flex items-center text-xs font-extralight text-grey-300 hover:text-grey-900">
+            <Link
+              href="/bills"
+              className="group flex items-center text-xs font-extralight text-grey-300 hover:text-grey-900"
+            >
               <span className="mr-2 duration-200 group-hover:mr-3">
                 See Details
               </span>
               <ArrowRightCircleIcon className="size-4" />
-            </button>
+            </Link>
           </div>
 
           <RecurringBillsOverviewList
