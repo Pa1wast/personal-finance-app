@@ -16,7 +16,6 @@ export default async function Page({ searchParams }) {
   const start = (page - 1) * perPage;
   const end = start + perPage;
 
-  // Fetch transactions based on current params
   const { transactions, totalTransactions } = await getTransactions(
     start,
     end,

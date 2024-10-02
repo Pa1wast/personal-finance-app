@@ -157,6 +157,7 @@ export default async function Home() {
                   category={budget.category}
                   maximum={budget.maximum}
                   color={budget.theme}
+                  isCompact={true}
                 />
               ))}
             </ul>

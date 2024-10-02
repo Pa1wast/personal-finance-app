@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { convertToCurrency } from "../lib/helpers";
+import { convertToCurrency, formatDate } from "../lib/helpers";
 
 export default function TransactionsList({ transactions }) {
   return (
@@ -37,7 +37,7 @@ export default function TransactionsList({ transactions }) {
                 </p>
               </div>
               <p>{transaction.category}</p>
-              <p>{transaction.date}</p>
+              <p>{formatDate(transaction.date)}</p>
 
               {transaction.amount > 0 ? (
                 <p className="text-md text-right font-extrabold text-green">
