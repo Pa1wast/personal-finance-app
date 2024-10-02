@@ -1,6 +1,10 @@
-"use client";
 import Image from "next/image";
+<<<<<<< Updated upstream
 import { convertToCurrency } from "../lib/helpers";
+=======
+import { convertToCurrency, formatDate } from "../lib/helpers";
+import Transaction from "./Transaction";
+>>>>>>> Stashed changes
 
 export default function TransactionsList({ transactions }) {
   return (
@@ -19,6 +23,7 @@ export default function TransactionsList({ transactions }) {
 
         {transactions.length ? (
           transactions.map((transaction, index) => (
+<<<<<<< Updated upstream
             <div
               key={transaction.name + "-" + index}
               className={`grid grid-cols-4 items-center gap-2 border-gray-100 py-3 ${index < transactions.length - 1 ? "border-b" : ""}`}
@@ -49,6 +54,13 @@ export default function TransactionsList({ transactions }) {
                 </p>
               )}
             </div>
+=======
+            <Transaction
+              key={index + "-" + Math.random()}
+              transaction={transaction}
+              isLast={index < transactions.length - 1}
+            />
+>>>>>>> Stashed changes
           ))
         ) : (
           <div className="grid h-full items-center">
