@@ -17,11 +17,10 @@ export async function getBudget(id) {
 }
 
 export async function createBudget(newBudget) {
-  //   const url = "http://localhost:3000/api/budgets/";
-  //   const res = await fetch(url);
-  //   const data = await res.json();
-  //   return data;
-  console.log(newBudget);
+  const url = "http://localhost:3000/api/budgets/";
+  const res = await fetch(url);
+  const data = await res.json();
+  return data;
 }
 
 export async function updateBudget(id) {
