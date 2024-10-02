@@ -17,7 +17,7 @@ function AddNewBudget() {
 
   function handleCloseModal() {
     const params = new URLSearchParams(searchParams.toString());
-    params.set("isAddModalOpen", "false");
+    params.delete("isAddModalOpen");
     router.push(`?${params.toString()}`);
   }
 

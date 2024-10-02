@@ -19,7 +19,8 @@ function EditBudget({ budget }) {
 
   function handleCloseModal() {
     const params = new URLSearchParams(searchParams.toString());
-    params.set("isEditModalOpen", "false");
+    params.delete("isEditModalOpen");
+    params.delete("id");
     router.push(`?${params.toString()}`);
   }
 

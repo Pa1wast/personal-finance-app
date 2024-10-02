@@ -1,7 +1,6 @@
 "use client";
 
 import { XCircleIcon } from "@heroicons/react/24/outline";
-import { useSearchParams, useRouter } from "next/navigation";
 
 function CloseModalButton({ onCloseModal }) {
   return (
