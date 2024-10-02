@@ -2,11 +2,18 @@ import { BudgetChart } from "../components/BudgetChart";
 import BudgetTag from "../components/BudgetTag";
 import { getBudgets, getTransactions } from "../lib/data-services";
 import BudgetCard from "../components/BudgetCard";
-import ModalActionButton from "../components/ModalActionButton";
+import OpenModalButton from "../components/OpenModalButton";
 import AddNewBudget from "../components/AddNewBudget";
+import EditBudget from "../components/EditBudget";
+import { getBudget } from "../lib/actions";
 
 export default async function Page({ searchParams }) {
-  const isModalOpen = searchParams.isModalOpen === "true";
+  const isAddModalOpen = searchParams.isAddModalOpen === "true";
+  const isEditModalOpen = searchParams.isEditModalOpen === "true";
+
+  let budgetToBeEdited;
+
+  if (isEditModalOpen) budgetToBeEdited = await getBudget(searchParams.id);
 
   const { transactions } = await getTransactions(
     0,
@@ -35,16 +42,21 @@ export default async function Page({ searchParams }) {
       <div className="flex justify-between">
         <h1 className="self-center text-3xl font-bold">Budgets</h1>
 
-        <ModalActionButton>+ Add New Budget</ModalActionButton>
+        <OpenModalButton
+          type="add"
+          className="text-md rounded-lg bg-grey-900 p-3 text-grey-100 hover:bg-grey-500"
+        >
+          + Add New Budget
+        </OpenModalButton>
       </div>
 
       <div className="grid grid-cols-3 gap-5 py-4">
-        <div className="h-max space-y-4 rounded-lg bg-white p-4">
+        <div className="h-max space-y-4 rounded-lg bg-white p-4 pb-0">
           <BudgetChart chartData={budgetsWithTotalSpent} />
 
           <h3 className="mb-3 text-lg font-bold">Spending Summary</h3>
 
-          <ul className="divide-y">
+          <ul className="flex flex-col">
             {budgetsWithTotalSpent.map((budget, index) => (
               <BudgetTag
                 key={budget.name + "-" + index}
@@ -53,6 +65,7 @@ export default async function Page({ searchParams }) {
                 color={budget.theme}
                 isCompact={false}
                 spent={budget.spent}
+                isLast={index === budgetsWithTotalSpent.length - 1}
               />
             ))}
           </ul>
@@ -65,7 +78,8 @@ export default async function Page({ searchParams }) {
         </ul>
       </div>
 
-      {isModalOpen && <AddNewBudget />}
+      {isAddModalOpen && <AddNewBudget />}
+      {isEditModalOpen && <EditBudget budget={budgetToBeEdited} />}
     </div>
   );
 }

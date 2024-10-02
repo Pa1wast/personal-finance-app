@@ -4,28 +4,30 @@ import { useSearchParams, useRouter } from "next/navigation";
 import CloseModalButton from "./CloseModalButton";
 import { ChevronDownIcon, ChevronUpIcon, DollarSign } from "lucide-react";
 import { useState } from "react";
-import { createBudget } from "../lib/actions";
+import { createBudget, getBudget, updateBudget } from "../lib/actions";
 import SubmitButton from "./SubmitButton";
 import { toast } from "react-toastify";
 
-function AddNewBudget() {
+function EditBudget({ budget }) {
+  const { id, category, maximum, theme } = budget;
   const searchParams = useSearchParams();
   const router = useRouter();
 
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const [isThemeOpen, setIsThemeOpen] = useState(false);
+  const [changesMade, setIsChangesMade] = useState(false);
 
   function handleCloseModal() {
     const params = new URLSearchParams(searchParams.toString());
-    params.set("isAddModalOpen", "false");
+    params.set("isEditModalOpen", "false");
     router.push(`?${params.toString()}`);
   }
 
   async function handleSubmit(formData) {
     if (!formData) return;
-    await createBudget(formData);
+    await updateBudget(formData);
     handleCloseModal();
-    toast.success("Budget added");
+    toast.success("Budget updated");
   }
 
   return (
@@ -34,16 +36,14 @@ function AddNewBudget() {
 
       <div className="absolute left-[50%] top-[50%] z-20 w-[40vw] max-w-[750px] translate-x-[-50%] translate-y-[-50%] space-y-10 rounded-lg bg-white px-7 py-5">
         <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-bold">Add new budget</h2>
+          <h2 className="text-2xl font-bold">Edit budget</h2>
           <CloseModalButton onCloseModal={handleCloseModal} />
         </div>
 
-        <p>
-          Choose a category to set a spending budget. These categories can help
-          you monitor spending.
-        </p>
+        <p>As your budgets change, feel free to update your spending limits.</p>
 
         <form action={handleSubmit} className="space-y-6">
+          <input hidden value={id} name="budgetId" />
           <div className="space-y-1">
             <label
               htmlFor="category"
@@ -65,6 +65,8 @@ function AddNewBudget() {
               </span>
               <select
                 required
+                defaultValue={category}
+                onChange={() => setIsChangesMade(true)}
                 id="category"
                 name="category"
                 className="focus-visible::outline-none w-full px-4 py-3 focus:outline-none active:outline-none"
@@ -86,7 +88,9 @@ function AddNewBudget() {
               <DollarSign className="ml-4 size-5 cursor-pointer text-grey-500 group-hover:text-grey-900" />
 
               <input
+                defaultValue={maximum}
                 required
+                onChange={() => setIsChangesMade(true)}
                 type="text"
                 id="maximum-amount"
                 name="maximum-amount"
@@ -113,6 +117,8 @@ function AddNewBudget() {
               </span>
 
               <select
+                defaultValue={theme}
+                onChange={() => setIsChangesMade(true)}
                 required
                 id="theme"
                 name="theme"
@@ -136,11 +142,13 @@ function AddNewBudget() {
               </select>
             </div>
           </div>
-          <SubmitButton pendingLabel="Adding...">Add Budget</SubmitButton>
+          <SubmitButton pendingLabel="Saving..." disabled={!changesMade}>
+            Save Changes
+          </SubmitButton>
         </form>
       </div>
     </>
   );
 }
 
-export default AddNewBudget;
+export default EditBudget;

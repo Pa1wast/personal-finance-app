@@ -3,9 +3,10 @@ import Link from "next/link";
 import { convertToCurrency } from "../lib/helpers";
 import { getTransactions } from "../lib/data-services";
 import TransactionsOverviewList from "./TransactionsOverviewList";
+import OpenModalButton from "./OpenModalButton";
 
 export default async function BudgetCard({ budget }) {
-  const { maximum, category, theme } = budget;
+  const { maximum, category, theme, id } = budget;
   const { transactions } = await getTransactions(
     0,
     49,
@@ -36,9 +37,9 @@ export default async function BudgetCard({ budget }) {
         ></div>
         <h2 className="text-2xl font-semibold capitalize">{category}</h2>
 
-        <button className="ml-auto">
+        <OpenModalButton className="ml-auto" type="edit" id={id}>
           <Ellipsis className="size-4 text-grey-500 hover:text-grey-300" />
-        </button>
+        </OpenModalButton>
       </div>
 
       <p className="text-sm text-grey-500">
