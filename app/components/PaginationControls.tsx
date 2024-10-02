@@ -9,13 +9,13 @@ function PaginationControls({ itemsPerPage, totalItems, fallBackPage }) {
   const perPage = itemsPerPage;
   const totalPages = Math.ceil(totalItems / perPage);
 
+  if (fallBackPage) updatePageParam(fallBackPage);
+
   function updatePageParam(newPage) {
     const params = new URLSearchParams(searchParams.toString());
     params.set("page", newPage);
     router.push(`?${params.toString()}`);
   }
-
-  if (fallBackPage) updatePageParam(fallBackPage);
 
   function handlePrev() {
     if (currentPage === 1) return;
