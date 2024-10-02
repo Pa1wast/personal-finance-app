@@ -2,27 +2,33 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useSearchParams, useRouter } from "next/navigation";
 
-function PaginationControls({ itemsPerPage, totalItems }) {
+function PaginationControls({ itemsPerPage, totalItems, fallBackPage }) {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const currentPage = Number(searchParams.get("page")) || 1; // Default to 1 if no page param is found
+  const currentPage = Number(searchParams.get("page")) || 1;
   const perPage = itemsPerPage;
-  const totalPages = Math.ceil(totalItems / perPage); // Calculate total pages
+  const totalPages = Math.ceil(totalItems / perPage);
+
+  function updatePageParam(newPage) {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("page", newPage);
+    router.push(`?${params.toString()}`);
+  }
+
+  if (fallBackPage) updatePageParam(fallBackPage);
 
   function handlePrev() {
     if (currentPage === 1) return;
-    const newPage = currentPage - 1;
-    router.push(`?page=${newPage}`);
+    updatePageParam(currentPage - 1);
   }
 
   function handleNext() {
     if (currentPage >= totalPages) return;
-    const newPage = currentPage + 1;
-    router.push(`?page=${newPage}`);
+    updatePageParam(currentPage + 1);
   }
 
   function handleSelectPage(page) {
-    router.push(`?page=${page}`);
+    updatePageParam(page);
   }
 
   return (
@@ -36,7 +42,6 @@ function PaginationControls({ itemsPerPage, totalItems }) {
       </button>
 
       <div className="flex space-x-2">
-        {/* Render buttons for each page */}
         {Array.from({ length: totalPages }, (_, index) => (
           <button
             key={index}
@@ -54,7 +59,7 @@ function PaginationControls({ itemsPerPage, totalItems }) {
 
       <button
         onClick={handleNext}
-        disabled={currentPage === totalPages}
+        disabled={currentPage === totalPages || totalPages === 0}
         className="flex cursor-pointer items-center gap-2 rounded-lg border border-beige-500 px-6 py-3 text-xs hover:bg-beige-500 hover:text-beige-100 disabled:pointer-events-none disabled:opacity-0"
       >
         <span>Next</span> <ChevronRight className="size-4" />
