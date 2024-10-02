@@ -1,13 +1,8 @@
 import { NextResponse } from "next/server";
-import fs from "fs/promises"; // Use promises API for fs
-import path from "path";
 import data from "../../data.json"; // Adjusted path to data.json
 import newBudgets from "../../newBudgets.json";
 
-const { budgets } = data;
-const allBudgets = budgets.concat(newBudgets);
-
-export async function POST(request) {
+export async function POST(request: Request) {
   try {
     const updatedBudget = await request.json();
 

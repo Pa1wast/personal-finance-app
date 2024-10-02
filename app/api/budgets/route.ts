@@ -10,26 +10,21 @@ export async function GET() {
   return NextResponse.json(allBudgets);
 }
 
-// Path to the newBudgets.json file
 const filePath = path.resolve(process.cwd(), "app/api/newBudgets.json");
 
-export async function POST(request) {
+export async function POST(request: Request) {
   try {
-    const newBudget = await request.json(); // Parse the incoming JSON data
+    const newBudget = await request.json();
 
-    // Check if the file exists
     let existingBudgets = [];
 
     if (fs.existsSync(filePath)) {
-      // Read the file if it exists
       const fileData = fs.readFileSync(filePath, "utf-8");
       existingBudgets = JSON.parse(fileData);
     }
 
-    // Append the new budget to the existing budgets
     existingBudgets.push(newBudget);
 
-    // Write the updated data back to the file
     fs.writeFileSync(
       filePath,
       JSON.stringify(existingBudgets, null, 2),
