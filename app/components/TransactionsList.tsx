@@ -19,7 +19,7 @@ export default function TransactionsList({ transactions }) {
             <Transaction
               key={index + "-" + Math.random()}
               transaction={transaction}
-              isLast={index < transactions.length - 1}
+              isLast={index === transactions.length - 1}
             />
           ))
         ) : (

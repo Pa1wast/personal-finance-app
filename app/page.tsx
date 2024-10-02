@@ -151,7 +151,7 @@ export default async function Home() {
           <div className="flex items-center">
             <BudgetChart chartData={budgetsWithTotalSpent} />
             <ul className="flex flex-col gap-4">
-              {budgets.map((budget, index) => (
+              {budgets.slice(0, 3).map((budget, index) => (
                 <BudgetTag
                   key={budget.name + "-" + index}
                   category={budget.category}

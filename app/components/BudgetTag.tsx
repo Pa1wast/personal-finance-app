@@ -6,18 +6,18 @@ export default function BudgetTag({
   color,
   isCompact = true,
   spent,
+  isLast,
 }: {
   category: string;
   maximum: number;
   color: string;
   isCompact: boolean;
   spent: number;
+  isLast?: boolean;
 }) {
   if (isCompact)
     return (
-      <li
-        className={`flex h-10 max-w-xs items-center gap-2 text-xs text-grey-900`}
-      >
+      <li className="flex h-10 max-w-xs items-center gap-2 text-xs text-grey-900">
         <span
           style={{ backgroundColor: color }}
           className="block h-full w-1 rounded-full"
@@ -35,7 +35,7 @@ export default function BudgetTag({
 
   return (
     <li
-      className={`flex h-10 items-center justify-between gap-2 text-grey-900`}
+      className={`flex items-center justify-between py-6 text-grey-900 ${isLast ? "" : "border-b"}`}
     >
       <div className="flex h-full items-center gap-4 text-xs">
         <span
@@ -48,7 +48,7 @@ export default function BudgetTag({
       </div>
 
       <div className="flex items-center gap-2">
-        <p className="overflow-hidden text-ellipsis whitespace-nowrap font-bold">
+        <p className="overflow-hidden text-ellipsis whitespace-nowrap text-sm font-bold">
           {convertToCurrency(spent, 2)}
         </p>
 

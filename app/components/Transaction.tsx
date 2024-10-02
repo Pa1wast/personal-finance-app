@@ -3,9 +3,12 @@ import { convertToCurrency, formatDate } from "../lib/helpers";
 
 export default function Transaction({ transaction, isLast = false }) {
   const { name, avatar, category, amount, date } = transaction;
+
+  console.log();
+
   return (
     <div
-      className={`grid grid-cols-4 items-center gap-2 border-gray-100 py-3 ${isLast ? "border-b" : ""}`}
+      className={`grid grid-cols-4 items-center gap-2 border-gray-100 py-3 ${isLast ? "" : "border-b"}`}
     >
       <div className="flex items-center gap-3">
         <div className="relative h-7 w-7 overflow-hidden rounded-full">
