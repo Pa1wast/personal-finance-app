@@ -18,9 +18,24 @@ import Link from "next/link";
 export default async function Home() {
   const { current, income, expenses } = await getBalance();
   const pots = await getPots();
-  const { transactions } = await getTransactions(0, 5);
+  const { transactions } = await getTransactions(
+    0,
+    5,
+    undefined,
+    undefined,
+    "latest",
+  );
   const budgets = await getBudgets();
-  const recurringBills = transactions.filter(
+
+  const { transactions: bills } = await getTransactions(
+    0,
+    40,
+    undefined,
+    undefined,
+    "latest",
+  );
+
+  const recurringBills = bills.filter(
     (transaction: { recurring: boolean }) => transaction.recurring,
   );
 
