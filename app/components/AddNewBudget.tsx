@@ -5,6 +5,8 @@ import CloseModalButton from "./CloseModalButton";
 import { ChevronDownIcon, ChevronUpIcon, DollarSign } from "lucide-react";
 import { useState } from "react";
 import { createBudget } from "../lib/actions";
+import SubmitButton from "./SubmitButton";
+import { toast } from "react-toastify";
 
 function AddNewBudget() {
   const searchParams = useSearchParams();
@@ -23,6 +25,7 @@ function AddNewBudget() {
     if (!formData) return;
     await createBudget(formData);
     handleCloseModal();
+    toast.success("Budget added");
   }
 
   return (
@@ -132,13 +135,7 @@ function AddNewBudget() {
               </select>
             </div>
           </div>
-
-          <button
-            type="submit"
-            className="text-md w-full rounded-lg bg-grey-900 p-3 text-grey-100 hover:bg-grey-500"
-          >
-            Add Budget
-          </button>
+          <SubmitButton pendingLabel="Adding...">Add Budget</SubmitButton>
         </form>
       </div>
     </>

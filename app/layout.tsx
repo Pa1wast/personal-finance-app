@@ -1,4 +1,5 @@
 import Sidebar from "./components/Sidebar";
+import ToastProvider from "./components/ToastProvider";
 import "./globals.css";
 import { metdataProps } from "@/app/types/types";
 
@@ -13,10 +14,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
       </head>
       <body>
-        <main className="relative flex h-screen w-screen bg-beige-100">
-          <Sidebar />
-          <div className="flex-1 overflow-x-hidden px-5 py-6">{children}</div>
-        </main>
+        <ToastProvider>
+          <main className="relative flex h-screen w-screen bg-beige-100">
+            <Sidebar />
+            <div className="flex-1 overflow-x-hidden px-5 py-6">{children}</div>
+          </main>
+        </ToastProvider>
       </body>
     </html>
   );
