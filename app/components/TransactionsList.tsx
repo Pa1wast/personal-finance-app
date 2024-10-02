@@ -14,7 +14,7 @@ export default function TransactionsList({ transactions }) {
       </div>
 
       {/* Table Rows */}
-      <div className="h-full space-y-4">
+      <div className="h-full">
         {/* Row */}
 
         {transactions.length ? (
@@ -24,7 +24,7 @@ export default function TransactionsList({ transactions }) {
               className={`grid grid-cols-4 items-center gap-2 border-gray-100 py-3 ${index < transactions.length - 1 ? "border-b" : ""}`}
             >
               <div className="flex items-center gap-3">
-                <div className="relative h-10 w-10 overflow-hidden rounded-full">
+                <div className="relative h-7 w-7 overflow-hidden rounded-full">
                   <Image
                     src={transaction.avatar}
                     alt={transaction.name}

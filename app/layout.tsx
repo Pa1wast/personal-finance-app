@@ -13,9 +13,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
       </head>
       <body>
-        <main className="flex h-screen w-screen overflow-hidden bg-beige-100">
+        <main className="relative flex h-screen w-screen bg-beige-100">
           <Sidebar />
-          <div className="flex-1 overflow-auto px-5 py-6">{children}</div>
+          <div className="flex-1 overflow-x-hidden px-5 py-6">{children}</div>
         </main>
       </body>
     </html>

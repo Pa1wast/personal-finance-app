@@ -2,8 +2,12 @@ import { BudgetChart } from "../components/BudgetChart";
 import BudgetTag from "../components/BudgetTag";
 import { getBudgets, getTransactions } from "../lib/data-services";
 import BudgetCard from "../components/BudgetCard";
+import ModalActionButton from "../components/ModalActionButton";
+import AddNewBudget from "../components/AddNewBudget";
 
-export default async function Page() {
+export default async function Page({ searchParams }) {
+  const isModalOpen = searchParams.isModalOpen === "true";
+
   const { transactions } = await getTransactions(
     0,
     49,
@@ -27,13 +31,11 @@ export default async function Page() {
   });
 
   return (
-    <div className="h-full gap-3 space-y-2">
+    <div className="flex h-full flex-col gap-3">
       <div className="flex justify-between">
         <h1 className="self-center text-3xl font-bold">Budgets</h1>
 
-        <button className="text-md rounded-lg bg-grey-900 p-3 text-grey-100 hover:bg-grey-500">
-          + Add New Budget
-        </button>
+        <ModalActionButton>+ Add New Budget</ModalActionButton>
       </div>
 
       <div className="grid grid-cols-3 gap-5 py-4">
@@ -62,6 +64,8 @@ export default async function Page() {
           ))}
         </ul>
       </div>
+
+      {isModalOpen && <AddNewBudget />}
     </div>
   );
 }
