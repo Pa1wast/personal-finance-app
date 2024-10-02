@@ -1,6 +1,4 @@
-"use client";
-import Image from "next/image";
-import { convertToCurrency, formatDate } from "../lib/helpers";
+import Transaction from "./Transaction";
 
 export default function TransactionsList({ transactions }) {
   return (
@@ -16,39 +14,13 @@ export default function TransactionsList({ transactions }) {
       {/* Table Rows */}
       <div className="h-full">
         {/* Row */}
-
         {transactions.length ? (
           transactions.map((transaction, index) => (
-            <div
-              key={transaction.name + "-" + index}
-              className={`grid grid-cols-4 items-center gap-2 border-gray-100 py-3 ${index < transactions.length - 1 ? "border-b" : ""}`}
-            >
-              <div className="flex items-center gap-3">
-                <div className="relative h-7 w-7 overflow-hidden rounded-full">
-                  <Image
-                    src={transaction.avatar}
-                    alt={transaction.name}
-                    fill
-                    className="absolute object-cover"
-                  />
-                </div>
-                <p className="text-md font-extrabold text-grey-900">
-                  {transaction.name}
-                </p>
-              </div>
-              <p>{transaction.category}</p>
-              <p>{formatDate(transaction.date)}</p>
-
-              {transaction.amount > 0 ? (
-                <p className="text-md text-right font-extrabold text-green">
-                  {convertToCurrency(transaction.amount, 2)}
-                </p>
-              ) : (
-                <p className="text-md text-right font-extrabold text-grey-900">
-                  {convertToCurrency(transaction.amount, 2)}
-                </p>
-              )}
-            </div>
+            <Transaction
+              key={index + "-" + Math.random()}
+              transaction={transaction}
+              isLast={index < transactions.length - 1}
+            />
           ))
         ) : (
           <div className="grid h-full items-center">
