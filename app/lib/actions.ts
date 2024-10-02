@@ -16,9 +16,27 @@ export async function getBudget(id) {
   return data;
 }
 
-export async function createBudget(newBudget) {
+export async function createBudget(formData) {
   const url = "http://localhost:3000/api/budgets/";
-  const res = await fetch(url);
+
+  const newBudget = {
+    category: formData.get("category"),
+    maximum: Number(formData.get("maximum-amount")),
+    theme: formData.get("theme"),
+  };
+
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newBudget),
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to create budget");
+  }
+
   const data = await res.json();
   return data;
 }

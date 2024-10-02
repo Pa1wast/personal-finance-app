@@ -34,7 +34,7 @@ export default async function BudgetCard({ budget }) {
           style={{ backgroundColor: theme }}
           className="h-5 w-5 rounded-full"
         ></div>
-        <h2 className="text-2xl font-semibold">{category}</h2>
+        <h2 className="text-2xl font-semibold capitalize">{category}</h2>
 
         <button className="ml-auto">
           <Ellipsis className="size-4 text-grey-500 hover:text-grey-300" />

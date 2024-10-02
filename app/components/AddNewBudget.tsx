@@ -19,6 +19,12 @@ function AddNewBudget() {
     router.push(`?${params.toString()}`);
   }
 
+  async function handleSubmit(formData) {
+    if (!formData) return;
+    await createBudget(formData);
+    handleCloseModal();
+  }
+
   return (
     <>
       <div className="absolute left-0 top-0 z-10 h-full w-full bg-black opacity-50"></div>
@@ -33,7 +39,7 @@ function AddNewBudget() {
           Create a budget to track your spendings and maybe save some money!
         </p>
 
-        <form action={createBudget} className="space-y-6">
+        <form action={handleSubmit} className="space-y-6">
           <div className="space-y-1">
             <label
               htmlFor="category"
@@ -54,6 +60,7 @@ function AddNewBudget() {
                 )}
               </span>
               <select
+                required
                 id="category"
                 name="category"
                 className="focus-visible::outline-none w-full px-4 py-3 focus:outline-none active:outline-none"
@@ -75,6 +82,7 @@ function AddNewBudget() {
               <DollarSign className="ml-4 size-5 cursor-pointer text-grey-500 group-hover:text-grey-900" />
 
               <input
+                required
                 type="text"
                 id="maximum-amount"
                 name="maximum-amount"
@@ -101,20 +109,32 @@ function AddNewBudget() {
               </span>
 
               <select
+                required
                 id="theme"
                 name="theme"
                 className="focus-visible::outline-none w-full px-4 py-3 focus:outline-none active:outline-none"
               >
-                <option value="blue">Blue</option>
-                <option value="red">Red</option>
-                <option value="cyan">Cyan</option>
+                <option value="#277C78">Green</option>
+                <option value="#597C7C">Turquoise</option>
+                <option value="#7F9161">Army Green</option>
+                <option value="#F2CDAC">Yellow</option>
+                <option value="#CAB361">Gold</option>
+                <option value="#BE6C49">Orange</option>
+                <option value="#C94736">Red</option>
+                <option value="#934F6F">Magenta</option>
+                <option value="#82C9D7">Cyan</option>
+                <option value="#3F82B2">Blue</option>
+                <option value="#626070">Navy</option>
+                <option value="#97A0AC">Navy Gray</option>
+                <option value="#826CB0">Dark Purple</option>
+                <option value="#AF81BA">Light Purple</option>
+                <option value="#93674F">Brown</option>
               </select>
             </div>
           </div>
 
           <button
             type="submit"
-            onClick={handleCloseModal}
             className="text-md w-full rounded-lg bg-grey-900 p-3 text-grey-100 hover:bg-grey-500"
           >
             Add Budget
