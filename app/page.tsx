@@ -164,7 +164,7 @@ export default async function Home() {
           </div>
         </div>
 
-        <div className="row-span-2 rounded-lg bg-white p-4">
+        <div className="row-span-2 h-max rounded-lg bg-white p-4">
           <div className="mb-6 flex justify-between">
             <p className="text-md font-extrabold">Transactions</p>
 
