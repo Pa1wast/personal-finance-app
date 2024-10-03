@@ -4,6 +4,7 @@ import { convertToCurrency } from "../lib/helpers";
 import { getTransactions } from "../lib/data-services";
 import TransactionsOverviewList from "./TransactionsOverviewList";
 import OpenModalButton from "./OpenModalButton";
+import ModalActions from "./ModalActions";
 
 export default async function BudgetCard({ budget }) {
   const { maximum, category, theme, id } = budget;
@@ -29,17 +30,38 @@ export default async function BudgetCard({ budget }) {
   const displayedTransactions = transactions.slice(0, 3);
 
   return (
-    <li className="space-y-4 rounded-lg bg-white p-4">
+    <li className="relative space-y-4 rounded-lg bg-white p-4">
       <div className="flex items-center gap-4">
         <div
           style={{ backgroundColor: theme }}
           className="h-5 w-5 rounded-full"
         ></div>
-        <h2 className="text-2xl font-semibold capitalize">{category}</h2>
+        <h2 className="mr-auto text-2xl font-semibold capitalize">
+          {category}
+        </h2>
 
-        <OpenModalButton className="ml-auto" type="edit" id={id}>
+        {/* <button>
           <Ellipsis className="size-4 text-grey-500 hover:text-grey-300" />
-        </OpenModalButton>
+        </button>
+
+        <div className="absolute right-0 top-0 flex flex-col items-start divide-y rounded-lg bg-white px-3 shadow-md">
+          <OpenModalButton
+            className="p-3 text-sm text-grey-900"
+            type="edit"
+            id={id}
+          >
+            Edit Budget
+          </OpenModalButton>
+          <OpenModalButton
+            type="delete"
+            id={id}
+            className="p-3 text-sm text-red"
+          >
+            Delete Budget
+          </OpenModalButton>
+        </div> */}
+
+        <ModalActions id={id} />
       </div>
 
       <p className="text-sm text-grey-500">

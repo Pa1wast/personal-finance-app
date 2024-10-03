@@ -4,7 +4,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import CloseModalButton from "./CloseModalButton";
 import { ChevronDownIcon, ChevronUpIcon, DollarSign } from "lucide-react";
 import { useState } from "react";
-import { createBudget, getBudget, updateBudget } from "../lib/actions";
+import { updateBudget } from "../lib/actions";
 import SubmitButton from "./SubmitButton";
 import { toast } from "react-toastify";
 
@@ -21,7 +21,7 @@ function EditBudget({ budget }) {
     const params = new URLSearchParams(searchParams.toString());
     params.delete("isEditModalOpen");
     params.delete("id");
-    router.push(`?${params.toString()}`);
+    router.push(`?${params.toString()}`, { scroll: false });
   }
 
   async function handleSubmit(formData) {
