@@ -9,9 +9,14 @@ function OpenModalButton({ children, type, className, id }) {
 
   function handleClick() {
     const params = new URLSearchParams(searchParams.toString());
-    if (type === "add") params.set("isAddModalOpen", "true");
-    else if (type === "edit") {
-      params.set("isEditModalOpen", "true");
+
+    if (type === "add") {
+      params.set("isAddModalOpen", "true");
+    } else if (type === "edit") {
+      params.set(`isEditModalOpen`, "true");
+      params.set("id", id);
+    } else if (type === "delete") {
+      params.set(`isDeleteModalOpen`, "true");
       params.set("id", id);
     }
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });

@@ -1,19 +1,16 @@
 import { NextResponse } from "next/server";
 
-export async function POST(request: Request) {
+export async function POST() {
   try {
-    const updatedBudget = await request.json();
-
     return NextResponse.json({
       status: 201,
-      message: "Budget updated successfully",
-      budget: updatedBudget,
+      message: "Budget deleted successfully",
     });
   } catch (error) {
     console.error("Error in POST request handler:", error);
     return NextResponse.json({
       status: 500,
-      message: "Failed to update budget",
+      message: "Failed to delete budget",
       error: error.message,
     });
   }

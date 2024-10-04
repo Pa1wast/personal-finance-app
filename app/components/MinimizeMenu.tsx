@@ -8,7 +8,7 @@ function MinimizeMenu({ onClick }) {
       onClick={onClick}
       className="mb-8 ml-3 mt-auto flex items-center gap-2 self-start text-grey-300 transition-all duration-200 hover:text-grey-100"
     >
-      <ChevronDoubleLeftIcon className="size-4" />
+      <ChevronDoubleLeftIcon className="size-6" />
       <span>Minimize Menu</span>
     </button>
   );

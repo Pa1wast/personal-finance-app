@@ -12,9 +12,8 @@ function ModalActions({ id }) {
     function handleClickOutside(e) {
       if (buttonRef.current === e.target.closest("button")) return;
 
-      if (modalRef.current && !modalRef.current.contains(e.target)) {
+      if (modalRef.current && !modalRef.current.contains(e.target))
         setIsOpen(false);
-      }
     }
 
     document.addEventListener("mousedown", handleClickOutside);

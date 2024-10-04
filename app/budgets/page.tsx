@@ -6,14 +6,19 @@ import OpenModalButton from "../components/OpenModalButton";
 import AddNewBudget from "../components/AddNewBudget";
 import EditBudget from "../components/EditBudget";
 import { getBudget } from "../lib/actions";
+import DeleteBudget from "../components/DeleteBudget";
 
 export default async function Page({ searchParams }) {
   const isAddModalOpen = searchParams.isAddModalOpen === "true";
   const isEditModalOpen = searchParams.isEditModalOpen === "true";
+  const isDeleteModalOpen = searchParams.isDeleteModalOpen === "true";
 
-  let budgetToBeEdited;
+  const budgetToBeChangedId = searchParams.id;
+  let budgetToBeChanged;
+  console.log(budgetToBeChangedId);
 
-  if (isEditModalOpen) budgetToBeEdited = await getBudget(searchParams.id);
+  if (budgetToBeChangedId)
+    budgetToBeChanged = await getBudget(budgetToBeChangedId);
 
   const { transactions } = await getTransactions(
     0,
@@ -79,7 +84,8 @@ export default async function Page({ searchParams }) {
       </div>
 
       {isAddModalOpen && <AddNewBudget />}
-      {isEditModalOpen && <EditBudget budget={budgetToBeEdited} />}
+      {isEditModalOpen && <EditBudget budget={budgetToBeChanged} />}
+      {isDeleteModalOpen && <DeleteBudget budget={budgetToBeChanged} />}
     </div>
   );
 }
