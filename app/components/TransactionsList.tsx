@@ -1,4 +1,7 @@
+import Image from "next/image";
+import { convertToCurrency, formatDate } from "../lib/helpers";
 import Transaction from "./Transaction";
+
 
 export default function TransactionsList({ transactions }) {
   return (
@@ -20,6 +23,11 @@ export default function TransactionsList({ transactions }) {
               key={index + "-" + Math.random()}
               transaction={transaction}
               isLast={index === transactions.length - 1}
+            />
+            <Transaction
+              key={index + "-" + Math.random()}
+              transaction={transaction}
+              isLast={index < transactions.length - 1}
             />
           ))
         ) : (
