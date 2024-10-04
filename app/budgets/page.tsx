@@ -15,7 +15,6 @@ export default async function Page({ searchParams }) {
 
   const budgetToBeChangedId = searchParams.id;
   let budgetToBeChanged;
-  console.log(budgetToBeChangedId);
 
   if (budgetToBeChangedId)
     budgetToBeChanged = await getBudget(budgetToBeChangedId);
@@ -64,7 +63,7 @@ export default async function Page({ searchParams }) {
           <ul className="flex flex-col">
             {budgetsWithTotalSpent.map((budget, index) => (
               <BudgetTag
-                key={budget.name + "-" + index}
+                key={budget.id}
                 category={budget.category}
                 maximum={budget.maximum}
                 color={budget.theme}

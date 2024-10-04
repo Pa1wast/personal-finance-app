@@ -426,36 +426,42 @@
   ],
   "pots": [
     {
+      "id": 1,
       "name": "Savings",
       "target": 2000.0,
       "total": 159.0,
       "theme": "#277C78"
     },
     {
+      "id": 2,
       "name": "Groceries",
       "target": 124.0,
       "total": 15.0,
       "theme": "#27745C"
     },
     {
+      "id": 3,
       "name": "Concert Ticket",
       "target": 150.0,
       "total": 110.0,
       "theme": "#626070"
     },
     {
+      "id": 4,
       "name": "Gift",
       "target": 150.0,
       "total": 110.0,
       "theme": "#82C9D7"
     },
     {
+      "id": 5,
       "name": "New Laptop",
       "target": 1000.0,
       "total": 10.0,
       "theme": "#F2CDAC"
     },
     {
+      "id": 6,
       "name": "Holiday",
       "target": 1440.0,
       "total": 531.0,

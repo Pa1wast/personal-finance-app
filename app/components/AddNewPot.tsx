@@ -1,38 +1,35 @@
 "use client";
 
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import CloseModalButton from "./CloseModalButton";
 import { ChevronDownIcon, ChevronUpIcon, DollarSign } from "lucide-react";
 import { useState } from "react";
-import { updateBudget } from "../lib/actions";
+import { createBudget } from "../lib/actions";
 import SubmitButton from "./SubmitButton";
 import { toast } from "react-toastify";
 
-function EditBudget({ budget }) {
-  const { id, category, maximum, theme } = budget;
-  const pathname = usePathname();
+function AddNewPot() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const [isThemeOpen, setIsThemeOpen] = useState(false);
-  const [changesMade, setIsChangesMade] = useState(false);
+  const [potName, setPotName] = useState("");
+  const maxChars = 30;
 
   function handleCloseModal() {
     const params = new URLSearchParams(searchParams.toString());
-    params.delete("isEditModalOpen");
-    params.delete("id");
-    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    params.delete("isAddModalOpen");
+    router.push(`?${params.toString()}`);
   }
 
   async function handleSubmit(formData) {
     if (!formData) return;
     try {
-      await updateBudget(formData);
+      await createBudget(formData);
       handleCloseModal();
-      toast.success("Budget was successfully edited");
+      toast.success("Pot was successfully added");
     } catch (error) {
-      toast.error("Could not edit budget");
+      toast.error("Could not add Pot");
       console.error(error);
     }
   }
@@ -43,64 +40,60 @@ function EditBudget({ budget }) {
 
       <div className="absolute left-[50%] top-[50%] z-20 w-[40vw] max-w-[750px] translate-x-[-50%] translate-y-[-50%] space-y-10 rounded-lg bg-white px-7 py-5">
         <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-bold">Edit Budget</h2>
+          <h2 className="text-2xl font-bold">Add new budget</h2>
           <CloseModalButton onCloseModal={handleCloseModal} />
         </div>
 
-        <p>As your budgets change, feel free to update your spending limits.</p>
+        <p>
+          Choose a category to set a spending budget. These categories can help
+          you monitor spending.
+        </p>
 
         <form action={handleSubmit} className="space-y-6">
-          <input hidden value={id} name="budgetId" />
           <div className="space-y-1">
             <label
-              htmlFor="category"
+              htmlFor="pot-name"
               className="text-xs font-bold text-grey-500"
             >
-              Budget Category
+              Pot Name
             </label>
 
-            <div
-              onClick={() => setIsCategoryOpen((cur) => !cur)}
-              className="relative flex items-center justify-between overflow-hidden rounded-lg border border-beige-500 focus-within:border-grey-900 hover:border-grey-900"
-            >
-              <span className="pointer-events-none absolute right-0 top-[50%] flex aspect-square h-full w-8 translate-y-[-50%] items-center bg-white">
-                {isCategoryOpen ? (
-                  <ChevronUpIcon className="size-4" />
-                ) : (
-                  <ChevronDownIcon className="size-4" />
-                )}
-              </span>
-              <select
+            <div className="group flex w-full items-center justify-between rounded-lg border border-beige-500 focus-within:border-grey-900 hover:border-grey-900">
+              <input
+                value={potName}
+                onChange={(e) => {
+                  const inputLength = e.target.value.length;
+
+                  if (inputLength <= maxChars) {
+                    setPotName(e.target.value);
+                  }
+                }}
                 required
-                defaultValue={category}
-                onChange={() => setIsChangesMade(true)}
-                id="category"
-                name="category"
-                className="focus-visible::outline-none w-full px-4 py-3 focus:outline-none active:outline-none"
-              >
-                <option value="general">General</option>
-                <option value="entertainment">Entertainment</option>
-              </select>
+                type="text"
+                id="pot-name"
+                name="pot-name"
+                className="h-full w-full rounded-lg px-4 py-3 outline-none placeholder:text-beige-500 disabled:opacity-75"
+              />
             </div>
+            <span
+              className={`ml-auto block w-max text-xs ${maxChars === potName.length ? "text-red" : "text-grey-500"}`}
+            >
+              {maxChars - potName.length} characters left
+            </span>
           </div>
 
           <div className="space-y-1">
-            <label
-              htmlFor="maximum-amount"
-              className="text-xs font-bold text-grey-500"
-            >
-              Maximum Spend
+            <label htmlFor="target" className="text-xs font-bold text-grey-500">
+              Target
             </label>
             <div className="group flex w-full items-center justify-between rounded-lg border border-beige-500 focus-within:border-grey-900 hover:border-grey-900">
               <DollarSign className="ml-4 size-5 cursor-pointer text-grey-500 group-hover:text-grey-900" />
 
               <input
-                defaultValue={maximum}
                 required
-                onChange={() => setIsChangesMade(true)}
                 type="text"
-                id="maximum-amount"
-                name="maximum-amount"
+                id="target"
+                name="target"
                 className="h-full w-full rounded-lg px-4 py-3 outline-none placeholder:text-beige-500"
               />
             </div>
@@ -124,8 +117,6 @@ function EditBudget({ budget }) {
               </span>
 
               <select
-                defaultValue={theme}
-                onChange={() => setIsChangesMade(true)}
                 required
                 id="theme"
                 name="theme"
@@ -149,13 +140,11 @@ function EditBudget({ budget }) {
               </select>
             </div>
           </div>
-          <SubmitButton pendingLabel="Saving..." disabled={!changesMade}>
-            Save Changes
-          </SubmitButton>
+          <SubmitButton pendingLabel="Adding...">Add Pot</SubmitButton>
         </form>
       </div>
     </>
   );
 }
 
-export default EditBudget;
+export default AddNewPot;

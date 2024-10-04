@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import OpenModalButton from "./OpenModalButton";
 import { Ellipsis } from "lucide-react";
 
-function ModalActions({ id }) {
+function ModalActions({ id, buttonLabel }) {
   const [isOpen, setIsOpen] = useState(false);
   const modalRef = useRef(null);
   const buttonRef = useRef(null);
@@ -35,19 +35,19 @@ function ModalActions({ id }) {
           className="absolute right-6 top-12 flex flex-col items-start overflow-hidden rounded-lg bg-white shadow-md"
         >
           <OpenModalButton
-            className="w-full p-3 text-sm text-grey-900 hover:bg-grey-100"
+            className="w-full p-3 text-start text-sm text-grey-900 hover:bg-grey-100"
             type="edit"
             id={id}
           >
-            Edit Budget
+            Edit {buttonLabel}
           </OpenModalButton>
           <span className="block h-[0.75px] w-[75%] self-center bg-grey-100"></span>
           <OpenModalButton
             type="delete"
             id={id}
-            className="w-full p-3 text-sm text-red hover:bg-grey-100"
+            className="w-full p-3 text-start text-sm text-red hover:bg-grey-100"
           >
-            Delete Budget
+            Delete {buttonLabel}
           </OpenModalButton>
         </div>
       )}

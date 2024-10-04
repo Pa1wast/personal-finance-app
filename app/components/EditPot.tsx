@@ -4,18 +4,19 @@ import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import CloseModalButton from "./CloseModalButton";
 import { ChevronDownIcon, ChevronUpIcon, DollarSign } from "lucide-react";
 import { useState } from "react";
-import { updateBudget } from "../lib/actions";
+import { updateBudget, updatePot } from "../lib/actions";
 import SubmitButton from "./SubmitButton";
 import { toast } from "react-toastify";
 
-function EditBudget({ budget }) {
-  const { id, category, maximum, theme } = budget;
+function EditPot({ pot }) {
+  const { id, name, target, theme } = pot;
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const [isThemeOpen, setIsThemeOpen] = useState(false);
+  const [numChars, setNumChars] = useState(name.length);
+  const maxChars = 30;
   const [changesMade, setIsChangesMade] = useState(false);
 
   function handleCloseModal() {
@@ -28,11 +29,11 @@ function EditBudget({ budget }) {
   async function handleSubmit(formData) {
     if (!formData) return;
     try {
-      await updateBudget(formData);
+      await updatePot(formData);
       handleCloseModal();
-      toast.success("Budget was successfully edited");
+      toast.success("Pot was successfully edited");
     } catch (error) {
-      toast.error("Could not edit budget");
+      toast.error("Could not edit pot");
       console.error(error);
     }
   }
@@ -43,64 +44,60 @@ function EditBudget({ budget }) {
 
       <div className="absolute left-[50%] top-[50%] z-20 w-[40vw] max-w-[750px] translate-x-[-50%] translate-y-[-50%] space-y-10 rounded-lg bg-white px-7 py-5">
         <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-bold">Edit Budget</h2>
+          <h2 className="text-2xl font-bold">Edit Pot</h2>
           <CloseModalButton onCloseModal={handleCloseModal} />
         </div>
 
-        <p>As your budgets change, feel free to update your spending limits.</p>
+        <p>If your saving targets change, feel free to update your pots.</p>
 
         <form action={handleSubmit} className="space-y-6">
-          <input hidden value={id} name="budgetId" />
+          <input hidden value={id} name="potId" />
           <div className="space-y-1">
             <label
-              htmlFor="category"
+              htmlFor="pot-name"
               className="text-xs font-bold text-grey-500"
             >
-              Budget Category
+              Pot Name
             </label>
 
-            <div
-              onClick={() => setIsCategoryOpen((cur) => !cur)}
-              className="relative flex items-center justify-between overflow-hidden rounded-lg border border-beige-500 focus-within:border-grey-900 hover:border-grey-900"
-            >
-              <span className="pointer-events-none absolute right-0 top-[50%] flex aspect-square h-full w-8 translate-y-[-50%] items-center bg-white">
-                {isCategoryOpen ? (
-                  <ChevronUpIcon className="size-4" />
-                ) : (
-                  <ChevronDownIcon className="size-4" />
-                )}
-              </span>
-              <select
+            <div className="group flex w-full items-center justify-between rounded-lg border border-beige-500 focus-within:border-grey-900 hover:border-grey-900">
+              <input
+                defaultValue={name}
+                onChange={(e) => {
+                  if (e.target.value.length > maxChars)
+                    return setNumChars(maxChars);
+
+                  setNumChars(e.target.value.length);
+                }}
                 required
-                defaultValue={category}
-                onChange={() => setIsChangesMade(true)}
-                id="category"
-                name="category"
-                className="focus-visible::outline-none w-full px-4 py-3 focus:outline-none active:outline-none"
-              >
-                <option value="general">General</option>
-                <option value="entertainment">Entertainment</option>
-              </select>
+                type="text"
+                id="pot-name"
+                name="pot-name"
+                className="h-full w-full rounded-lg px-4 py-3 outline-none placeholder:text-beige-500 disabled:opacity-75"
+              />
             </div>
+            <span className="ml-auto block w-max text-xs text-grey-500">
+              {maxChars - numChars} characters left
+            </span>
           </div>
 
           <div className="space-y-1">
             <label
-              htmlFor="maximum-amount"
+              htmlFor="pot-name"
               className="text-xs font-bold text-grey-500"
             >
-              Maximum Spend
+              Target
             </label>
             <div className="group flex w-full items-center justify-between rounded-lg border border-beige-500 focus-within:border-grey-900 hover:border-grey-900">
               <DollarSign className="ml-4 size-5 cursor-pointer text-grey-500 group-hover:text-grey-900" />
 
               <input
-                defaultValue={maximum}
+                defaultValue={target}
                 required
                 onChange={() => setIsChangesMade(true)}
                 type="text"
-                id="maximum-amount"
-                name="maximum-amount"
+                id="pot-name"
+                name="pot-name"
                 className="h-full w-full rounded-lg px-4 py-3 outline-none placeholder:text-beige-500"
               />
             </div>
@@ -158,4 +155,4 @@ function EditBudget({ budget }) {
   );
 }
 
-export default EditBudget;
+export default EditPot;

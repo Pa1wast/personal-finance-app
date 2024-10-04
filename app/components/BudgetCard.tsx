@@ -39,7 +39,7 @@ export default async function BudgetCard({ budget }) {
           {category}
         </h2>
 
-        <ModalActions id={id} />
+        <ModalActions buttonLabel="Budget" id={id} />
       </div>
 
       <p className="text-sm text-grey-500">

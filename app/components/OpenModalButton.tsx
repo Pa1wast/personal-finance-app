@@ -18,6 +18,12 @@ function OpenModalButton({ children, type, className, id }) {
     } else if (type === "delete") {
       params.set(`isDeleteModalOpen`, "true");
       params.set("id", id);
+    } else if (type === "add-money") {
+      params.set(`isAddMoneyModalOpen`, "true");
+      params.set("id", id);
+    } else if (type === "withdraw-money") {
+      params.set(`isWithdrawMoneyModalOpen`, "true");
+      params.set("id", id);
     }
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   }
