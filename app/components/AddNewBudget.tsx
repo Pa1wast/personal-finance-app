@@ -23,9 +23,14 @@ function AddNewBudget() {
 
   async function handleSubmit(formData) {
     if (!formData) return;
-    await createBudget(formData);
-    handleCloseModal();
-    toast.success("Budget added");
+    try {
+      await createBudget(formData);
+      handleCloseModal();
+      toast.success("Budget was successfully added");
+    } catch (error) {
+      toast.error("Could not add budget");
+      console.error(error);
+    }
   }
 
   return (

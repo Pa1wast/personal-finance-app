@@ -1,15 +1,16 @@
 "use client";
 
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import CloseModalButton from "./CloseModalButton";
 import { ChevronDownIcon, ChevronUpIcon, DollarSign } from "lucide-react";
 import { useState } from "react";
-import { createBudget, getBudget, updateBudget } from "../lib/actions";
+import { updateBudget } from "../lib/actions";
 import SubmitButton from "./SubmitButton";
 import { toast } from "react-toastify";
 
 function EditBudget({ budget }) {
   const { id, category, maximum, theme } = budget;
+  const pathname = usePathname();
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -21,14 +22,19 @@ function EditBudget({ budget }) {
     const params = new URLSearchParams(searchParams.toString());
     params.delete("isEditModalOpen");
     params.delete("id");
-    router.push(`?${params.toString()}`);
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   }
 
   async function handleSubmit(formData) {
     if (!formData) return;
-    await updateBudget(formData);
-    handleCloseModal();
-    toast.success("Budget updated");
+    try {
+      await updateBudget(formData);
+      handleCloseModal();
+      toast.success("Budget was successfully edited");
+    } catch (error) {
+      toast.error("Could not add budget");
+      console.error(error);
+    }
   }
 
   return (

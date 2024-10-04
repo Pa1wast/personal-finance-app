@@ -27,7 +27,7 @@ export default function Sidebar() {
     <div
       className={`flex overflow-hidden duration-500 ${isMinimized ? "w-min pr-4" : "w-[18%]"} flex-col gap-16 rounded-br-2xl rounded-tr-2xl bg-grey-900`}
     >
-      <Logo className={`ml-3 mt-6 ${isMinimized ? "opacity-0" : ""}`} />
+      <Logo isMinimized={isMinimized} />
       <NavLinks isMinimized={isMinimized} />
       {isMinimized ? (
         <ExpandMenu onClick={() => setIsMinimized(false)} />

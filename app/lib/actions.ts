@@ -70,8 +70,6 @@ export async function updateBudget(formData) {
 }
 
 export async function deleteBudget(id) {
-  //   const url = `http://localhost:3000/api/budgets/delete/${id}`;
-  //   const res = await fetch(url);
-  //   const data = await res.json();
-  //   return data;
+  const url = `http://localhost:3000/api/budgets/delete?${id}`;
+  await fetch(url);
 }
