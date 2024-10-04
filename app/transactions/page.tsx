@@ -11,12 +11,11 @@ export default async function Page({ searchParams }) {
   const sortBy = searchParams.sortby;
   const category = searchParams.category;
   const page = parseInt(searchParams.page) || 1;
-  const perPage = 5;
+  const perPage = 7;
 
   const start = (page - 1) * perPage;
   const end = start + perPage;
 
-  // Fetch transactions based on current params
   const { transactions, totalTransactions } = await getTransactions(
     start,
     end,

@@ -25,7 +25,7 @@ export default function TransactionsOverviewList({
           <li key={transaction.name + "-" + transaction.date + "-" + index}>
             <TransactionOverview transaction={transaction} />
             {index < transactions.length - 1 && (
-              <span className="mb-5 mt-5 block h-[1px] w-full bg-grey-100"></span>
+              <span className="mb-5 mt-5 block h-[1px] w-full bg-grey-300"></span>
             )}
           </li>
         ),

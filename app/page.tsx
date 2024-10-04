@@ -151,19 +151,20 @@ export default async function Home() {
           <div className="flex items-center">
             <BudgetChart chartData={budgetsWithTotalSpent} />
             <ul className="flex flex-col gap-4">
-              {budgets.map((budget, index) => (
+              {budgets.slice(0, 3).map((budget, index) => (
                 <BudgetTag
                   key={budget.name + "-" + index}
                   category={budget.category}
                   maximum={budget.maximum}
                   color={budget.theme}
+                  isCompact={true}
                 />
               ))}
             </ul>
           </div>
         </div>
 
-        <div className="row-span-2 rounded-lg bg-white p-4">
+        <div className="row-span-2 h-max rounded-lg bg-white p-4">
           <div className="mb-6 flex justify-between">
             <p className="text-md font-extrabold">Transactions</p>
 
