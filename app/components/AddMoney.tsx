@@ -19,17 +19,17 @@ function AddMoney({ pot }) {
 
   const hasReachedTarget = total + Number(amount) >= target;
 
-  const barPercentage = Number(((total / target) * 100).toFixed());
+  const barPercentage = Number(((total / target) * 100).toFixed(2));
 
   const addedBarPercentage = hasReachedTarget
     ? Number((100 - barPercentage).toFixed(2))
-    : Number(((Number(amount) / target) * 100).toFixed());
+    : Number(((Number(amount) / target) * 100).toFixed(2));
   const barWidth = barPercentage.toString().concat("%");
   const addedBarWidth =
     Number(amount) > 0 ? addedBarPercentage.toString().concat("%") : "0%";
 
   const totlPercentage = (barPercentage + addedBarPercentage)
-    .toFixed()
+    .toFixed(2)
     .concat("%");
 
   function handleCloseModal() {
