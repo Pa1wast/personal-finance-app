@@ -35,7 +35,7 @@ export default async function Page({ searchParams }) {
     <div className="flex h-full flex-col gap-3">
       <h1 className="text-3xl font-bold">Transactions</h1>
       <div className="flex h-full flex-col gap-5 overflow-y-auto rounded-lg bg-white px-7 py-6">
-        <SearchAndFilter categories={categories} />
+        <SearchAndFilter categories={categories} categoriesActive={true} />
         <TransactionsList transactions={transactions} />
         <PaginationControls
           itemsPerPage={perPage}

@@ -81,7 +81,7 @@
       "avatar": "/images/avatars/pixel-playground.jpg",
       "name": "Pixel Playground",
       "category": "Entertainment",
-      "date": "2024-08-11T18:45:38Z",
+      "date": "2024-12-11T18:45:38Z",
       "amount": -10.0,
       "recurring": true
     },
@@ -137,7 +137,7 @@
       "avatar": "/images/avatars/elevate-education.jpg",
       "name": "Elevate Education",
       "category": "Education",
-      "date": "2024-08-04T11:15:22Z",
+      "date": "2024-10-11T11:15:22Z",
       "amount": -50.0,
       "recurring": true
     },
