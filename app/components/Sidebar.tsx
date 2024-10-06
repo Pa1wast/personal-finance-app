@@ -25,7 +25,7 @@ export default function Sidebar() {
 
   return (
     <div
-      className={`flex overflow-hidden duration-500 ${isMinimized ? "w-min pr-4" : "w-[18%]"} flex-col gap-16 rounded-br-2xl rounded-tr-2xl bg-grey-900`}
+      className={`order-1 flex w-full overflow-hidden rounded-t-lg duration-500 lg:rounded-tl-none ${isMinimized ? "lg:w-min" : "lg:w-[18%]"} lg:order-0 lg:order-0 flex-row bg-grey-900 lg:flex-col lg:gap-16 lg:rounded-br-2xl lg:rounded-tr-2xl`}
     >
       <Logo isMinimized={isMinimized} />
       <NavLinks isMinimized={isMinimized} />

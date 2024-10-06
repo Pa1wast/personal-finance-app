@@ -5,7 +5,7 @@ export default function RecurringBillList({ transactions }) {
   return (
     <div className="h-full w-full px-4 text-xs font-thin text-beige-500">
       {/* Table Header */}
-      <div className="grid grid-cols-3 gap-2 border-b border-gray-100 pb-2 text-xs font-thin">
+      <div className="hidden gap-2 border-b border-gray-100 pb-2 text-xs font-thin sm:grid sm:grid-cols-3">
         <p>Bill Title</p>
         <p>Due Date</p>
         <p className="text-right">Amount</p>

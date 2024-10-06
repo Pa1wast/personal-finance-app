@@ -8,7 +8,7 @@ export default function Logo({ isMinimized }) {
       <Image
         src={isMinimized ? logoSmall : logoLarge}
         alt="Logo"
-        className="ml-6 mt-8"
+        className="ml-6 mt-8 hidden lg:block"
       />
     </div>
   );

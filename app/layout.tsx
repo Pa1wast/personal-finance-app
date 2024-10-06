@@ -15,9 +15,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <ToastProvider>
-          <main className="relative flex h-screen w-screen bg-beige-100">
+          <main className="relative flex h-screen w-screen flex-col bg-beige-100 lg:flex-row">
             <Sidebar />
-            <div className="flex-1 overflow-x-hidden px-5 py-6">{children}</div>
+            <div className="order-0 flex-1 overflow-auto px-2 py-3 lg:order-1">
+              {children}
+            </div>
           </main>
         </ToastProvider>
       </body>

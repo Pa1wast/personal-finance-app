@@ -32,7 +32,7 @@ function DeleteBudget({ budget }) {
     <>
       <div className="absolute left-0 top-0 z-10 h-full w-full bg-black opacity-50"></div>
 
-      <div className="absolute left-[50%] top-[50%] z-20 w-[40vw] max-w-[750px] translate-x-[-50%] translate-y-[-50%] space-y-10 rounded-lg bg-white px-7 py-5">
+      <div className="absolute left-[50%] top-[50%] z-20 w-[95%] translate-x-[-50%] translate-y-[-50%] space-y-10 rounded-lg bg-white px-7 py-5 md:w-[75%] lg:w-[50vw]">
         <div className="flex items-center justify-between">
           <h2 className="text-2xl font-bold">Delete ‘{category}’?</h2>
           <CloseModalButton onCloseModal={handleCloseModal} />

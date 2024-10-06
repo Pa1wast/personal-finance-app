@@ -36,7 +36,7 @@ export default async function Page({ searchParams }) {
         </OpenModalButton>
       </div>
 
-      <ul className="col-span-2 grid grid-cols-2 gap-5 py-6">
+      <ul className="col-span-2 flex flex-col gap-5 py-6 lg:grid lg:grid-cols-2">
         {pots.map((pot, index) => (
           <PotCard key={pot.id} pot={pot} />
         ))}

@@ -60,9 +60,9 @@ export default async function Page({ searchParams }) {
     <div className="flex h-full flex-col gap-3 pb-6">
       <h1 className="text-3xl font-bold">Recurring Bills</h1>
 
-      <div className="grid h-full grid-cols-3 grid-rows-2 gap-4 py-4">
-        <div className="flex flex-col gap-4">
-          <div className="h-max space-y-4 rounded-lg bg-grey-900 px-6 py-4 text-grey-100">
+      <div className="flex h-full flex-col gap-4 py-4 lg:grid lg:grid-cols-3 lg:grid-rows-2">
+        <div className="flex flex-col gap-4 sm:flex-row lg:flex-col">
+          <div className="flex flex-col space-y-4 rounded-lg bg-grey-900 px-6 py-4 text-grey-100 sm:flex-1">
             <CurrencyDollarIcon className="mb-8 size-10" />
             <h3 className="text-sm font-thin">Total Bills</h3>
             <p className="text-2xl font-bold">
@@ -70,7 +70,9 @@ export default async function Page({ searchParams }) {
             </p>
           </div>
 
-          <div className="h-max gap-2 space-y-4 rounded-lg bg-white px-6 py-4 text-grey-900">
+          <div className="gap-2 space-y-4 rounded-lg bg-white px-6 py-4 text-grey-900 sm:flex-1">
+            <h2 className="text-lg font-bold">Summary</h2>
+
             <div className="flex items-center justify-between">
               <p className="text-xs text-grey-500">Paid Bills</p>
               <p className="text-sm font-bold text-grey-900">
@@ -83,7 +85,6 @@ export default async function Page({ searchParams }) {
             <div className="flex items-center justify-between">
               <p className="text-xs text-grey-500">Total Upcoming</p>
               <p className="text-sm font-bold text-grey-900">
-                {" "}
                 {convertToCurrency(totalUpcoming, 2)}
               </p>
             </div>
@@ -93,21 +94,18 @@ export default async function Page({ searchParams }) {
             <div className="flex items-center justify-between">
               <p className="text-xs text-red">Due Soon</p>
               <p className="text-sm font-bold text-red">
-                {" "}
                 {convertToCurrency(dueBills, 2)}
               </p>
             </div>
           </div>
         </div>
 
-        <div className="relative col-span-2 row-span-2 flex h-full flex-col gap-5 overflow-hidden rounded-lg bg-white">
+        <div className="flex h-max flex-col gap-5 rounded-lg bg-white px-2 py-4 lg:col-span-2 lg:w-full">
           <SearchAndFilter
             categoriesActive={false}
             options={{ placeholder: "bills" }}
           />
-          <div className={transactions.length && "overflow-y-auto"}>
-            <RecurringBillList transactions={recurringBills} />
-          </div>
+          <RecurringBillList transactions={recurringBills} />
         </div>
       </div>
     </div>

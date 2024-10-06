@@ -22,9 +22,9 @@ export default function RecurringBill({ transaction, isLast = false }) {
 
   return (
     <div
-      className={`grid grid-cols-3 items-center gap-2 border-gray-100 py-3 ${isLast ? "" : "border-b"}`}
+      className={`grid grid-cols-[1fr_max-content] items-center gap-4 border-gray-100 py-3 sm:grid-cols-3 sm:gap-2 ${isLast ? "" : "border-b"}`}
     >
-      <div className="flex items-center gap-3">
+      <div className="col-span-2 flex items-center gap-3 sm:col-auto">
         <div className="relative h-7 w-7 overflow-hidden rounded-full">
           <Image
             src={avatar}

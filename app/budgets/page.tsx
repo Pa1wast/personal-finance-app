@@ -54,7 +54,7 @@ export default async function Page({ searchParams }) {
         </OpenModalButton>
       </div>
 
-      <div className="grid grid-cols-3 gap-5 py-4">
+      <div className="flex flex-col gap-5 py-2 lg:grid lg:grid-cols-3">
         <div className="h-max space-y-4 rounded-lg bg-white p-4 pb-0">
           <BudgetChart chartData={budgetsWithTotalSpent} />
 

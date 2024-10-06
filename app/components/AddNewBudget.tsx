@@ -37,7 +37,7 @@ function AddNewBudget() {
     <>
       <div className="absolute left-0 top-0 z-10 h-full w-full bg-black opacity-50"></div>
 
-      <div className="absolute left-[50%] top-[50%] z-20 w-[40vw] max-w-[750px] translate-x-[-50%] translate-y-[-50%] space-y-10 rounded-lg bg-white px-7 py-5">
+      <div className="absolute left-[50%] top-[50%] z-20 w-[95%] translate-x-[-50%] translate-y-[-50%] space-y-10 rounded-lg bg-white px-7 py-5 md:w-[75%] lg:w-[50vw]">
         <div className="flex items-center justify-between">
           <h2 className="text-2xl font-bold">Add new budget</h2>
           <CloseModalButton onCloseModal={handleCloseModal} />
@@ -72,7 +72,7 @@ function AddNewBudget() {
                 required
                 id="category"
                 name="category"
-                className="focus-visible::outline-none w-full px-4 py-3 focus:outline-none active:outline-none"
+                className="focus-visible::outline-none w-full px-4 py-3 text-xs focus:outline-none active:outline-none"
               >
                 <option value="general">General</option>
                 <option value="entertainment">Entertainment</option>
@@ -95,7 +95,7 @@ function AddNewBudget() {
                 type="text"
                 id="maximum-amount"
                 name="maximum-amount"
-                className="h-full w-full rounded-lg px-4 py-3 outline-none placeholder:text-beige-500"
+                className="h-full w-full rounded-lg px-4 py-3 text-xs outline-none placeholder:text-beige-500"
               />
             </div>
           </div>
@@ -121,7 +121,7 @@ function AddNewBudget() {
                 required
                 id="theme"
                 name="theme"
-                className="focus-visible::outline-none w-full px-4 py-3 focus:outline-none active:outline-none"
+                className="focus-visible::outline-none w-full px-4 py-3 text-xs focus:outline-none active:outline-none"
               >
                 <option value="#277C78">Green</option>
                 <option value="#597C7C">Turquoise</option>

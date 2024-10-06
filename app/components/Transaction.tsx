@@ -6,7 +6,7 @@ export default function Transaction({ transaction, isLast = false }) {
 
   return (
     <div
-      className={`grid grid-cols-4 items-center gap-2 border-gray-100 py-3 ${isLast ? "" : "border-b"}`}
+      className={`grid grid-cols-[1fr_max-content] items-center gap-2 border-gray-100 py-3 sm:grid-cols-4 ${isLast ? "" : "border-b"}`}
     >
       <div className="flex items-center gap-3">
         <div className="relative h-7 w-7 overflow-hidden rounded-full">
@@ -19,15 +19,15 @@ export default function Transaction({ transaction, isLast = false }) {
         </div>
         <p className="text-md font-extrabold text-grey-900">{name}</p>
       </div>
-      <p>{category}</p>
-      <p>{formatDate(date)}</p>
+      <p className="col-start-1 sm:col-auto">{category}</p>
+      <p className="text-right sm:text-left">{formatDate(date)}</p>
 
       {amount > 0 ? (
-        <p className="text-md text-right font-extrabold text-green">
+        <p className="text-md col-start-2 row-start-1 text-right font-extrabold text-green sm:col-auto sm:row-auto">
           {convertToCurrency(amount, 2)}
         </p>
       ) : (
-        <p className="text-md text-right font-extrabold text-grey-900">
+        <p className="text-md col-start-2 row-start-1 text-right font-extrabold text-grey-900 sm:col-auto sm:row-auto">
           {convertToCurrency(amount, 2)}
         </p>
       )}

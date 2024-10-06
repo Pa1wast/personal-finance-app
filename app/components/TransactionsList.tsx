@@ -2,9 +2,9 @@ import Transaction from "./Transaction";
 
 export default function TransactionsList({ transactions }) {
   return (
-    <div className="h-full w-full px-4 text-xs font-thin text-beige-500">
+    <div className="h-full w-full overflow-y-auto px-2 text-xs font-thin text-beige-500">
       {/* Table Header */}
-      <div className="grid grid-cols-4 gap-2 border-b border-gray-100 pb-2 text-xs font-thin">
+      <div className="hidden grid-cols-4 gap-2 border-b border-gray-100 pb-2 text-xs font-thin sm:grid">
         <p>Recipient / Sender</p>
         <p>Category</p>
         <p>Transaction Date</p>

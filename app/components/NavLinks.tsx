@@ -38,63 +38,38 @@ function NavLinks({ isMinimized }) {
   const pathname = usePathname();
 
   return (
-    <ul>
+    <ul className="flex flex-1 px-2 pt-2 lg:max-h-max lg:flex-col lg:justify-start lg:pl-0 lg:pr-1">
       {links.map((link) => {
         const isActive = pathname === link.href;
-
-        if (isMinimized)
-          return (
-            <li
-              key={link.name}
-              className={`group flex w-[90%] items-center rounded-br-xl rounded-tr-xl border-l-4 text-sm transition-all duration-200 ${
-                isActive
-                  ? "border-green bg-beige-100 text-grey-900"
-                  : "border-transparent text-grey-300 hover:text-grey-100"
-              }`}
-            >
-              <Link
-                href={link.href}
-                className={`mt-auto inline-block rounded-lg px-4 py-3 font-bold ${
-                  isActive ? "text-grey-900" : "group-hover:text-grey-100"
-                }`}
-              >
-                {getIcon(
-                  link.name,
-                  `size-6  ${
-                    isActive
-                      ? "text-green"
-                      : "group-hover:text-grey-100 text-grey-300"
-                  }`,
-                )}
-              </Link>
-            </li>
-          );
 
         return (
           <li
             key={link.name}
-            className={`group flex w-[90%] items-center rounded-br-xl rounded-tr-xl border-l-4 text-sm transition-all duration-200 ${
+            className={`group flex flex-1 flex-col items-center rounded-t-lg border-b-4 p-3 text-sm transition-all duration-200 lg:w-[90%] lg:flex-row lg:rounded-br-xl lg:rounded-tl-none lg:rounded-tr-xl lg:border-b-0 lg:border-l-4 ${
               isActive
                 ? "border-green bg-beige-100 text-grey-900"
                 : "border-transparent text-grey-300 hover:text-grey-100"
             }`}
           >
-            {getIcon(
-              link.name,
-              `size-6 ml-4 ${
-                isActive
-                  ? "text-green"
-                  : "group-hover:text-grey-100 text-grey-300"
-              }`,
-            )}
-
             <Link
               href={link.href}
-              className={`mt-auto inline-block rounded-lg px-4 py-3 font-bold ${
+              className={`lg:p4 flex flex-col items-center gap-3 rounded-lg font-bold lg:flex-row ${
                 isActive ? "text-grey-900" : "group-hover:text-grey-100"
               }`}
             >
-              {link.name}
+              {getIcon(
+                link.name,
+                `size-4 lg:size-6 md:size-5 ${
+                  isActive
+                    ? "text-green"
+                    : "group-hover:text-grey-100 text-grey-300"
+                }`,
+              )}
+              <span
+                className={`hidden md:block ${isMinimized ? "lg:hidden" : ""}`}
+              >
+                {link.name}
+              </span>
             </Link>
           </li>
         );
