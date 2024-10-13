@@ -1,12 +1,44 @@
+"use client";
+
 import SubmitButton from "@/app/components/SubmitButton";
 import { EyeIcon } from "@heroicons/react/24/solid";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
+  const router = useRouter();
+
+  async function handleSubmit(formData) {
+    const email = formData.get("email");
+    const password = formData.get("password");
+
+    console.log(email, password);
+
+    try {
+      const res = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
+
+      console.log(res);
+
+      if (res?.error) {
+        throw res.error;
+      }
+
+      router.replace("/");
+      router.refresh();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div className="flex h-full w-full items-center justify-center px-3 md:px-8 lg:px-0">
       <div className="w-full rounded-lg bg-white px-4 py-10 lg:w-[60%]">
-        <form className="flex flex-col gap-4">
+        <form action={handleSubmit} className="flex flex-col gap-4">
           <h2 className="text-2xl font-bold">Sign In</h2>
 
           <div className="space-y-1">
@@ -19,7 +51,7 @@ export default function Page() {
                 required
                 type="text"
                 id="email"
-                name=""
+                name="email"
                 className="h-full w-full rounded-lg px-4 py-3 outline-none placeholder:text-beige-500 disabled:opacity-75"
               />
             </div>
@@ -32,10 +64,10 @@ export default function Page() {
 
             <div className="group flex w-full items-center justify-between rounded-lg border border-beige-500 focus-within:border-grey-900 hover:border-grey-900">
               <input
-                type="text"
+                type="password"
                 required
-                id="email"
-                name="email"
+                id="password"
+                name="password"
                 className="h-full w-full rounded-lg px-4 py-3 outline-none placeholder:text-beige-500"
               />
 
@@ -44,7 +76,7 @@ export default function Page() {
           </div>
 
           <div className="mt-6">
-            <SubmitButton pendingLabel={"Signing up..."} disabled={false}>
+            <SubmitButton pendingLabel={"Signing in..."} disabled={false}>
               Sign in
             </SubmitButton>
           </div>
@@ -52,7 +84,7 @@ export default function Page() {
         <p className="mt-8 text-center text-sm text-grey-500">
           Need to create an account?{" "}
           <Link
-            href="/auth/signup"
+            href="/signup"
             className="ml-2 font-bold text-grey-900 underline underline-offset-4 hover:text-grey-500"
           >
             Sign up

@@ -57,7 +57,7 @@ export default async function Page({ searchParams }) {
   const totalBills = paidBills + dueBills + totalUpcoming;
 
   return (
-    <div className="flex h-full flex-col gap-3 pb-6">
+    <div className="flex h-full flex-col gap-3 px-4 py-6 pb-6">
       <h1 className="text-3xl font-bold">Recurring Bills</h1>
 
       <div className="flex h-full flex-col gap-4 py-4 lg:grid lg:grid-cols-3 lg:grid-rows-2">

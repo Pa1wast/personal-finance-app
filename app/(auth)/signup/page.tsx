@@ -1,12 +1,39 @@
+"use client";
+
 import SubmitButton from "@/app/components/SubmitButton";
 import { EyeIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 
 export default function Page() {
+  async function handleSubmit(formData) {
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const password = formData.get("password");
+
+    try {
+      const response = await fetch("http://localhost:3000/api/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, password }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+
+      const data = await response.json(); // Parse the response as JSON
+      console.log(data); // Log the JSON response
+    } catch (error) {
+      console.log("Fetch error:", error.message);
+    }
+  }
+
   return (
     <div className="flex h-full w-full items-center justify-center px-3 md:px-8 lg:px-0">
       <div className="w-full rounded-lg bg-white px-4 py-8 lg:w-[60%]">
-        <form className="flex flex-col gap-4">
+        <form action={handleSubmit} className="flex flex-col gap-4">
           <h2 className="text-2xl font-bold">Sign Up</h2>
 
           <div className="space-y-1">
@@ -72,7 +99,7 @@ export default function Page() {
         <p className="mt-8 text-center text-sm text-grey-500">
           Already have an account?
           <Link
-            href="/auth/signin"
+            href="/signin"
             className="ml-2 font-bold text-grey-900 underline underline-offset-4 hover:text-grey-500"
           >
             Sign in

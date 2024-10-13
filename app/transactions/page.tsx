@@ -32,7 +32,7 @@ export default async function Page({ searchParams }) {
   const categories = await getTransactionsCategories();
 
   return (
-    <div className="flex h-full flex-col gap-3">
+    <div className="flex h-full flex-col gap-3 px-4 py-6">
       <h1 className="text-3xl font-bold">Transactions</h1>
       <div className="flex h-full flex-col gap-5 overflow-y-auto rounded-lg bg-white px-2 py-4">
         <SearchAndFilter categories={categories} categoriesActive={true} />

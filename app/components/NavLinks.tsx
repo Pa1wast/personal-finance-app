@@ -9,6 +9,7 @@ import {
   ChartPieIcon,
   CurrencyDollarIcon,
   BanknotesIcon,
+  UserIcon,
 } from "@heroicons/react/24/solid";
 
 const links: navLinks = [
@@ -31,6 +32,10 @@ const links: navLinks = [
   {
     name: "Recurring Bills",
     href: "/bills",
+  },
+  {
+    name: "Account",
+    href: "/account",
   },
 ];
 
@@ -94,5 +99,7 @@ function getIcon(linkName: string, className: string) {
       return <CurrencyDollarIcon className={className} />;
     case "recurring-bills":
       return <BanknotesIcon className={className} />;
+    case "account":
+      return <UserIcon className={className} />;
   }
 }

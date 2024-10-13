@@ -73,7 +73,7 @@ export default async function Home() {
   });
 
   return (
-    <div>
+    <div className="px-4 py-6">
       <h1 className="mb-8 text-3xl font-bold">Overview</h1>
 
       <div className="mb-4 flex w-full flex-col justify-between gap-4 sm:flex-row">

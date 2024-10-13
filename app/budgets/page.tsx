@@ -42,7 +42,7 @@ export default async function Page({ searchParams }) {
   });
 
   return (
-    <div className="flex h-full flex-col gap-3">
+    <div className="flex h-full flex-col gap-3 px-4 py-6">
       <div className="flex justify-between">
         <h1 className="self-center text-3xl font-bold">Budgets</h1>
 

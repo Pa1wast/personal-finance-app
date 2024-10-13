@@ -5,8 +5,12 @@ import MinimizeMenu from "./MinimizeMenu";
 import NavLinks from "./NavLinks";
 import ExpandMenu from "./ExpandMenu";
 import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
 
 export default function Sidebar() {
+  const session = useSession();
+  console.log(session);
+
   const [isMinimized, setIsMinimized] = useState(false);
   const [isReady, setIsReady] = useState(false);
 
@@ -22,6 +26,8 @@ export default function Sidebar() {
     if (isReady)
       localStorage.setItem("isMinimized", JSON.stringify(isMinimized));
   }, [isMinimized, isReady]);
+
+  if (session.status !== "authenticated") return null;
 
   return (
     <div
