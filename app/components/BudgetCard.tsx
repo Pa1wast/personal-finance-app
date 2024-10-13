@@ -1,7 +1,7 @@
 import { ArrowRightCircleIcon } from "lucide-react";
 import Link from "next/link";
-import { convertToCurrency } from "../lib/helpers";
-import { getTransactions } from "../lib/data-services";
+import { convertToCurrency } from "../_lib/helpers";
+import { getTransactions } from "../_lib/data-services";
 import TransactionsOverviewList from "./TransactionsOverviewList";
 import ModalActions from "./ModalActions";
 

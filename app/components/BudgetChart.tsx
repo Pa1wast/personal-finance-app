@@ -10,7 +10,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { convertToCurrency } from "../lib/helpers";
+import { convertToCurrency } from "../_lib/helpers";
 
 export const description = "A donut chart with text";
 

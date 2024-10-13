@@ -2,7 +2,7 @@
 
 import { useSearchParams, useRouter } from "next/navigation";
 import CloseModalButton from "./CloseModalButton";
-import { deletePot } from "../lib/actions";
+import { deletePot } from "../_lib/actions";
 import { toast } from "react-toastify";
 import SubmitButton from "./SubmitButton";
 

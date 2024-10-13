@@ -4,7 +4,7 @@ import PaginationControls from "../components/PaginationControls";
 import {
   getTransactions,
   getTransactionsCategories,
-} from "../lib/data-services";
+} from "../_lib/data-services";
 
 export default async function Page({ searchParams }) {
   const query = searchParams.query;

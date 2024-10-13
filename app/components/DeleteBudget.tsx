@@ -2,7 +2,7 @@
 
 import { useSearchParams, useRouter } from "next/navigation";
 import CloseModalButton from "./CloseModalButton";
-import { deleteBudget } from "../lib/actions";
+import { deleteBudget } from "../_lib/actions";
 import { toast } from "react-toastify";
 import SubmitButton from "./SubmitButton";
 

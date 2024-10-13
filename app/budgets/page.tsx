@@ -1,11 +1,11 @@
 import { BudgetChart } from "../components/BudgetChart";
 import BudgetTag from "../components/BudgetTag";
-import { getBudgets, getTransactions } from "../lib/data-services";
+import { getBudgets, getTransactions } from "../_lib/data-services";
 import BudgetCard from "../components/BudgetCard";
 import OpenModalButton from "../components/OpenModalButton";
 import AddNewBudget from "../components/AddNewBudget";
 import EditBudget from "../components/EditBudget";
-import { getBudget } from "../lib/actions";
+import { getBudget } from "../_lib/actions";
 import DeleteBudget from "../components/DeleteBudget";
 
 export default async function Page({ searchParams }) {

@@ -4,10 +4,10 @@ import {
   getBudgets,
   getPots,
   getTransactions,
-} from "./lib/data-services";
+} from "./_lib/data-services";
 import { ArrowRightCircleIcon } from "@heroicons/react/24/outline";
 import { CurrencyDollarIcon } from "@heroicons/react/24/outline";
-import { convertToCurrency } from "./lib/helpers";
+import { convertToCurrency } from "./_lib/helpers";
 import PotTag from "./components/PotTag";
 import { BudgetChart } from "./components/BudgetChart";
 import BudgetTag from "./components/BudgetTag";

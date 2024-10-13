@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import data from "../data.json";
-import { pool } from "../lib/db";
+import { pool } from "../../_lib/db";
 const { balance } = data;
 
 export async function GET() {

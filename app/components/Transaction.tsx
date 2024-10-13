@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { convertToCurrency, formatDate } from "../lib/helpers";
+import { convertToCurrency, formatDate } from "../_lib/helpers";
 
 export default function Transaction({ transaction, isLast = false }) {
   const { name, avatar, amount, category, date } = transaction;

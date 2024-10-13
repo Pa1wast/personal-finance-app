@@ -5,8 +5,8 @@ import EditPot from "../components/EditPot";
 import OpenModalButton from "../components/OpenModalButton";
 import PotCard from "../components/PotCard";
 import WithdrawMoney from "../components/WithdrawMoney";
-import { getPot } from "../lib/actions";
-import { getPots } from "../lib/data-services";
+import { getPot } from "../_lib/actions";
+import { getPots } from "../_lib/data-services";
 
 export default async function Page({ searchParams }) {
   const isAddModalOpen = searchParams.isAddModalOpen === "true";

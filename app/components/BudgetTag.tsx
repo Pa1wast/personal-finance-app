@@ -1,4 +1,4 @@
-import { convertToCurrency } from "../lib/helpers";
+import { convertToCurrency } from "../_lib/helpers";
 
 export default function BudgetTag({
   category,

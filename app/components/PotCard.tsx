@@ -1,4 +1,4 @@
-import { convertToCurrency } from "../lib/helpers";
+import { convertToCurrency } from "../_lib/helpers";
 import ModalActions from "./ModalActions";
 import OpenModalButton from "./OpenModalButton";
 

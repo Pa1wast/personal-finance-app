@@ -1,5 +1,5 @@
 import { ChevronUpIcon } from "lucide-react";
-import { updateBudget } from "../lib/actions";
+import { updateBudget } from "../_lib/actions";
 import { toast } from "react-toastify";
 
 function EditBudgetForm({ onCloseModal }) {

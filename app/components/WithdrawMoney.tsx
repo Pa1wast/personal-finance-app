@@ -4,10 +4,10 @@ import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import CloseModalButton from "./CloseModalButton";
 import { DollarSign } from "lucide-react";
 import { useState } from "react";
-import { updatePot } from "../lib/actions";
+import { updatePot } from "../_lib/actions";
 import SubmitButton from "./SubmitButton";
 import { toast } from "react-toastify";
-import { convertToCurrency } from "../lib/helpers";
+import { convertToCurrency } from "../_lib/helpers";
 
 function WithdrawMoney({ pot }) {
   const { id, name, target, total } = pot;

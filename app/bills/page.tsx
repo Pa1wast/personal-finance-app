@@ -1,10 +1,10 @@
 import TransactionsList from "../components/TransactionsList";
-import { getTransactions } from "../lib/data-services";
+import { getTransactions } from "../_lib/data-services";
 import { CurrencyDollarIcon } from "@heroicons/react/24/outline";
 import SearchAndFilter from "../components/SearchAndFilter";
 import RecurringBillList from "../components/RecurringBillList";
 import { differenceInDays, isPast, isSameDay } from "date-fns";
-import { convertToCurrency } from "../lib/helpers";
+import { convertToCurrency } from "../_lib/helpers";
 
 export default async function Page({ searchParams }) {
   const query = searchParams.query;
