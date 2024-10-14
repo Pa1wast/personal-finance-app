@@ -13,16 +13,12 @@ export default function Page() {
     const email = formData.get("email");
     const password = formData.get("password");
 
-    console.log(email, password);
-
     try {
       const res = await signIn("credentials", {
         email,
         password,
         redirect: false,
       });
-
-      console.log(res);
 
       if (res?.error) {
         throw res.error;

@@ -3,7 +3,7 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 
-const authOptions = {
+export const authOptions = {
   providers: [
     CredentialsProvider({
       name: "credentials",
@@ -37,6 +37,27 @@ const authOptions = {
       },
     }),
   ],
+
+  // callbacks: {
+  //   authorized({ auth, request }) {
+  //     return !!auth?.user;
+  //   },
+
+  //   async signIn({ user, account, profile }) {
+  //     return true;
+  //   },
+
+  //   async session({ session, user }) {
+  //     const result = await pool.query("SELECT * FROM users WHERE email = $1", [
+  //       user.email,
+  //     ]);
+
+  //     const curUser = result.rows[0];
+  //     session.cus.user = curUser;
+
+  //     return session;
+  //   },
+  // },
 
   session: {
     strategy: "jwt",

@@ -23,8 +23,7 @@ export default function Page() {
         throw new Error(`Error: ${response.status}`);
       }
 
-      const data = await response.json(); // Parse the response as JSON
-      console.log(data); // Log the JSON response
+      const data = await response.json();
     } catch (error) {
       console.log("Fetch error:", error.message);
     }
