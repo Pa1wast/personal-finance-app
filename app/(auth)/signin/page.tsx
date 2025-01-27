@@ -24,6 +24,8 @@ export default function Page() {
         throw res.error;
       }
 
+      console.log(res);
+
       router.replace("/");
       router.refresh();
     } catch (error) {

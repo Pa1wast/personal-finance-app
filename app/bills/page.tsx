@@ -1,4 +1,3 @@
-import TransactionsList from "../components/TransactionsList";
 import { getTransactions } from "../_lib/data-services";
 import { CurrencyDollarIcon } from "@heroicons/react/24/outline";
 import SearchAndFilter from "../components/SearchAndFilter";

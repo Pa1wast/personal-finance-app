@@ -2,9 +2,9 @@
 
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import CloseModalButton from "./CloseModalButton";
-import { ChevronDownIcon, ChevronUpIcon, DollarSign } from "lucide-react";
+import { DollarSign } from "lucide-react";
 import { useState } from "react";
-import { updateBudget, updatePot } from "../_lib/actions";
+import { updatePot } from "../_lib/actions";
 import SubmitButton from "./SubmitButton";
 import { toast } from "react-toastify";
 import { convertToCurrency } from "../_lib/helpers";
